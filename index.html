@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Invierte tu IRPF con ventajas fiscales. ConTuCuota transforma impuestos en oportunidades.">
+  <meta name="keywords" content="IRPF, inversión fiscal, deducción IRPF, proyectos, fiscalidad, startup, ConTuCuota">
+  <meta property="og:title" content="ConTuCuota | Invierte tu IRPF con ventajas fiscales">
+  <meta property="og:description" content="Convierte tu IRPF en inversión productiva con ConTuCuota. Seguridad jurídica y retorno.">
+  <meta property="og:image" content="logo_contucuota_nuevo.png">
+  <meta property="og:type" content="website">
+  <title>ConTuCuota | Invierte tu IRPF con ventajas fiscales</title>
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+    }
+    header.header {
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: #ffffff;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+      position: sticky;
+      top: 0;
+      z-index: 999;
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+    }
+    .logo img {
+      height: 60px;
+      margin-right: 10px;
+    }
+    nav a {
+      margin-left: 1.5rem;
+      font-weight: 600;
+      color: #2c3e50;
+      text-decoration: none;
+    }
+    .hero {
+      text-align: center;
+      padding: 6rem 2rem;
+      background: linear-gradient(to bottom, rgba(255,255,255,0.95), rgba(240,250,240,0.9)), url('hero-background.jpg') center/cover no-repeat;
+      color: #2c3e50;
+    }
+    .hero h1 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+    .hero p {
+      font-size: 1.2rem;
+      max-width: 700px;
+      margin: 0 auto 2rem;
+    }
+    .cta-button {
+      background-color: #4CAF50;
+      color: white;
+      padding: 1rem 2rem;
+      border: none;
+      border-radius: 6px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    .cta-button:hover {
+      background-color: #43a047;
+    }
+    footer {
+      text-align: center;
+      padding: 3rem 1rem;
+      background-color: #2C3E50;
+      color: #fff;
+    }
+    footer img {
+      height: 75px;
+      margin-bottom: 1rem;
+    }
+    @media (max-width: 768px) {
+      .hero h1 {
+        font-size: 2rem;
+      }
+      nav a {
+        margin-left: 1rem;
+        font-size: 0.95rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="logo" aria-label="Logo ConTuCuota">
+      <img src="logo_contucuota_nuevo.png" alt="Logo ConTuCuota" loading="lazy">
+      <strong>ConTuCuota</strong>
+    </div>
+    <nav aria-label="Menú principal">
+      <a href="#como-funciona">Cómo funciona</a>
+      <a href="#proyectos">Proyectos</a>
+      <a href="#calculadora">Calculadora</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero" aria-labelledby="titulo-hero">
+      <h1 id="titulo-hero" data-aos="fade-down">Invierte con ventajas fiscales</h1>
+      <p data-aos="fade-up">Convierte tu IRPF en inversión productiva. Recupera hasta el 50% con seguridad jurídica.</p>
+      <a class="cta-button" href="#calculadora" data-aos="zoom-in">Simula tu deducción</a>
+    </section>
+
+    <!-- Reinserción completa de secciones originales con mejoras -->
+    <!-- Cada bloque se añadirá con data-aos y estructura semántica -->
+    <!-- Esto incluye: como-funciona, mision, proyectos, simulacion-visual, contacto, aviso legal -->
+
+    <section id="como-funciona" data-aos="fade-up">
+  <h2 style="text-align:center; font-size:2rem;">¿Cómo funciona?</h2>
+  <div style="display:flex; flex-wrap:wrap; justify-content:center; gap:2rem; margin-top:3rem;">
+    <div style="flex:1 1 200px; max-width:220px; text-align:center;">
+      <div style="font-size:2rem; color:#4CAF50;">1</div>
+      <h3 style="margin:0.5rem 0;">Invierte desde 5.000 €</h3>
+      <p style="font-size:0.95rem; color:#555;">Selecciona uno de los proyectos y formaliza tu participación.</p>
+    </div>
+    <div style="flex:1 1 200px; max-width:220px; text-align:center;">
+      <div style="font-size:2rem; color:#4CAF50;">2</div>
+      <h3 style="margin:0.5rem 0;">Deduce el 50%</h3>
+      <p style="font-size:0.95rem; color:#555;">Recibe el certificado y aplica la deducción en tu IRPF.</p>
+    </div>
+    <div style="flex:1 1 200px; max-width:220px; text-align:center;">
+      <div style="font-size:2rem; color:#4CAF50;">3</div>
+      <h3 style="margin:0.5rem 0;">Firma y aporta</h3>
+      <p style="font-size:0.95rem; color:#555;">Proceso 100% digital con seguridad jurídica.</p>
+    </div>
+    <div style="flex:1 1 200px; max-width:220px; text-align:center;">
+      <div style="font-size:2rem; color:#4CAF50;">4</div>
+      <h3 style="margin:0.5rem 0;">Recupera y rentabiliza</h3>
+      <p style="font-size:0.95rem; color:#555;">Recuperas desde el año 3 vía recompra o dividendos.</p>
+    </div>
+  </div>
+</section>
+    <section id="mision" data-aos="fade-up" style="background-color:#fffbe6; padding:4rem 2rem;">
+  <h2 style="text-align:center; font-size:2rem; margin-bottom:1.5rem;">Nuestra Visión</h2>
+  <p style="max-width:800px; margin:0 auto; font-size:1.1rem; color:#333; text-align:center; line-height:1.7;">
+    <strong>ConTuCuota®</strong> es una iniciativa que nace de la oportunidad que ofrece el sistema fiscal español. 
+    Transformamos impuestos en impacto. Democratizamos el acceso a la inversión privada, apostamos por sectores estratégicos 
+    como tecnología, agroindustria y sostenibilidad. Ayudamos a que cualquier persona pueda contribuir con sentido, retorno y 
+    seguridad jurídica.
+  </p>
+</section>
+    <section id="proyectos" data-aos="fade-up" style="background-color:#F5F9FA; padding: 4rem 2rem;">
+  <h2 style="text-align:center; font-size:2rem;">Convocatoria de Proyectos e Ideas</h2>
+  <p style="text-align:center; max-width:700px; margin: 0 auto 1.5rem; font-size:1rem; color:#4F4F4F;">
+    Si eres emprendedor o tienes una idea innovadora y buscas financiación o un socio estratégico, en ConTuCuota estamos construyendo una plataforma de conexión entre proyectos e inversores. Esta futura herramienta facilitará el <strong>matchmaking transparente</strong> y el <strong>seguimiento de las operaciones</strong>.
+  </p>
+  <p style="text-align:center; max-width:700px; margin: 0 auto 2rem; font-size:1rem; color:#4F4F4F;">
+    Muy pronto podrás enviar tu candidatura. Si ya quieres contactar, escríbenos desde la sección de contacto.
+  </p>
+  <h3 style="text-align:center; margin-bottom:2rem;">Sectores con encaje fiscal</h3>
+  <div style="display:flex; flex-wrap:wrap; justify-content:center; gap:2rem;">
+    <div style="flex:1 1 200px; max-width:220px; text-align:center;">
+      <div style="font-size:2rem;">🌿</div>
+      <h4 style="margin:0.5rem 0;">Agroindustria</h4>
+      <p style="font-size:0.95rem; color:#555;">Cultivos ecológicos, transformación alimentaria y cadenas locales de valor.</p>
+    </div>
+    <div style="flex:1 1 200px; max-width:220px; text-align:center;">
+      <div style="font-size:2rem;">🎬</div>
+      <h4 style="margin:0.5rem 0;">Cultura y audiovisual</h4>
+      <p style="font-size:0.95rem; color:#555;">Producción de contenidos, espectáculos, animación y difusión cultural.</p>
+    </div>
+    <div style="flex:1 1 200px; max-width:220px; text-align:center;">
+      <div style="font-size:2rem;">💡</div>
+      <h4 style="margin:0.5rem 0;">Tecnología e innovación</h4>
+      <p style="font-size:0.95rem; color:#555;">Startups, plataformas digitales, automatización e I+D.</p>
+    </div>
+    <div style="flex:1 1 200px; max-width:220px; text-align:center;">
+      <div style="font-size:2rem;">🏗</div>
+      <h4 style="margin:0.5rem 0;">Sectores tradicionales</h4>
+      <p style="font-size:0.95rem; color:#555;">Industria ligera, comercio, producción local y oficios sostenibles.</p>
+    </div>
+    <div style="flex:1 1 200px; max-width:220px; text-align:center;">
+      <div style="font-size:2rem;">🌊</div>
+      <h4 style="margin:0.5rem 0;">Medioambiente y agua</h4>
+      <p style="font-size:0.95rem; color:#555;">Economía circular, eficiencia hídrica, sostenibilidad y reforestación.</p>
+    </div>
+    <div style="flex:1 1 200px; max-width:220px; text-align:center;">
+      <div style="font-size:2rem;">⚡</div>
+      <h4 style="margin:0.5rem 0;">Energía y logística</h4>
+      <p style="font-size:0.95rem; color:#555;">Movilidad, energías renovables, redes de transporte e infraestructuras.</p>
+    </div>
+  </div>
+</section>
+    <section id="simulacion-visual" data-aos="fade-up" style="background-color:#f7f9fb; padding:4rem 2rem;">
+  <h2 style="text-align:center; font-size:2rem;">Simulación de inversión recurrente</h2>
+  <p style="text-align:center; max-width:600px; margin: 0 auto 2rem;">
+    Selecciona el ticket anual y años de inversión. Se deduce el 50% al año siguiente y se recupera desde el año 3.
+  </p>
+  <div style="max-width:500px; margin:0 auto;">
+    <label for="sim-ticket">Ticket anual (€):</label>
+    <select id="sim-ticket">
+      <option value="5000">5.000 €</option>
+      <option selected value="10000">10.000 €</option>
+      <option value="20000">20.000 €</option>
+    </select>
+    <label for="sim-anios">Años de inversión (1 a 5):</label>
+    <input id="sim-anios" max="5" min="1" type="number" value="5" />
+    <button class="cta-button" onclick="simularInversion()">Simular flujo de caja</button>
+  </div>
+  <canvas height="300" id="graficoFlujo" style="max-width:800px; margin:2rem auto; display:block;"></canvas>
+  <div id="explicacionSim" style="max-width:700px; margin:0 auto; font-size:1rem; color:#333; text-align:center;">
+    <p>Interpretación:</p>
+    <p>La barra roja representa el dinero aportado (flujo negativo), la verde la deducción fiscal recuperada al año siguiente, y la azul el capital potencialmente recuperado desde el año 3.</p>
+    <p id="resumenIndicadores" style="margin-top:1rem; font-weight:600;"></p>
+    <p style="margin-top:1rem; font-size:0.95rem; color:#444;">
+      Ejemplo: si inviertes 10.000 € durante 5 años, puedes recuperar 25.000 € en deducciones y retornos, y mantener otros 25.000 € en el capital de las empresas, donde podrían crecer, generar dividendos o ser recomprados.
+    </p>
+  </div>
+</section>
+<script>
+  function simularInversion() {
+    const resumen = document.getElementById('resumenIndicadores');
+    const ticket = parseInt(document.getElementById('sim-ticket').value);
+    const anios = parseInt(document.getElementById('sim-anios').value);
+    const dataInversion = Array(8).fill(0);
+    const dataDeduccion = Array(8).fill(0);
+    const dataRetorno = Array(8).fill(0);
+    const dataRemanente = Array(8).fill(0);
+
+    for (let i = 0; i < anios; i++) {
+      dataInversion[i] = -ticket;
+      dataDeduccion[i + 1] = ticket * 0.5;
+    }
+
+    let remanenteAcumulado = 0;
+    for (let i = 2; i < 8; i++) {
+      if (i - 2 < anios) {
+        dataRetorno[i] = ticket * 0.25;
+        remanenteAcumulado += ticket * 0.25;
+      }
+      dataRemanente[i] = remanenteAcumulado;
+    }
+
+    if (window.flujoChart) window.flujoChart.destroy();
+    const ctx = document.getElementById('graficoFlujo').getContext('2d');
+    let totalInversion = 0, totalDeduccion = 0, totalRecuperado = 0;
+    for (let i = 0; i < 8; i++) {
+      totalInversion += dataInversion[i];
+      totalDeduccion += dataDeduccion[i];
+      totalRecuperado += dataRetorno[i];
+    }
+    const rentabilidad = totalDeduccion + totalRecuperado + remanenteAcumulado + totalInversion;
+    resumen.innerHTML = `Rentabilidad estimada neta: <span style='color:${rentabilidad >= 0 ? '#4CAF50' : 'red'}'>${rentabilidad.toLocaleString('es-ES', { style: 'currency', currency: 'EUR' })}</span> en 8 años.`;
+
+    window.flujoChart = new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: ['Año 1', 'Año 2', 'Año 3', 'Año 4', 'Año 5', 'Año 6', 'Año 7', 'Año 8'],
+        datasets: [
+          { label: 'Aportación (€)', data: dataInversion, backgroundColor: '#f44336' },
+          { label: 'Deducción IRPF (€)', data: dataDeduccion, backgroundColor: '#4CAF50' },
+          { label: 'Recuperación (€)', data: dataRetorno, backgroundColor: '#2196F3' },
+          { label: 'Remanente en empresa (€)', data: dataRemanente, backgroundColor: '#FF9800' }
+        ]
+      },
+      options: {
+        responsive: true,
+        plugins: {
+          title: { display: true, text: 'Simulación del flujo de caja por inversión recurrente' },
+          tooltip: { mode: 'index', intersect: false }
+        },
+        scales: {
+          y: {
+            beginAtZero: true,
+            title: { display: true, text: '€ Euros' }
+          }
+        }
+      }
+    });
+  }
+</script>
+    <section id="contacto" data-aos="fade-up" style="background:#f5f5f5; padding:4rem 2rem;">
+  <h2 style="text-align:center;">Contacto</h2>
+  <p style="text-align:center;">¿Tienes dudas o quieres proponer un proyecto? Escríbenos:</p>
+  <form style="max-width:500px; margin:0 auto; display:flex; flex-direction:column; gap:1rem;">
+    <input placeholder="Tu nombre" required type="text" aria-label="Nombre">
+    <input placeholder="Tu email" required type="email" aria-label="Email">
+    <textarea placeholder="Tu mensaje" required rows="4" aria-label="Mensaje"></textarea>
+    <button class="cta-button" type="submit">Enviar</button>
+    <p style="font-size:0.9rem; color:#666; margin-top:1rem;">
+      Tus datos se tratarán conforme al RGPD. No serán cedidos a terceros. Puedes ejercer tus derechos escribiendo a info@contucuota.es.
+    </p>
+  </form>
+</section>
+    <section id="aviso-legal" data-aos="fade-up" style="background:#eef0f2; padding:2rem; text-align:center; font-size:0.9rem; color:#444;">
+  <p><strong>Aviso legal y responsabilidad</strong></p>
+  <p>Las simulaciones son orientativas. Consulta siempre con tu asesor fiscal. Las deducciones pueden variar según el art. 68.1 LIRPF.</p>
+</section>
+
+    <section id="calculadora" class="calculadora" aria-labelledby="titulo-calculadora" data-aos="fade-up">
+      <h2 id="titulo-calculadora">Calculadora de Deducción IRPF</h2>
+      <p>Introduce tu cuota íntegra estatal y elige el importe para estimar tu deducción.</p>
+      <form id="formCalculadora">
+        <label for="cuota">Tu cuota íntegra estatal (€):</label>
+        <input type="number" id="cuota" name="cuota" placeholder="Ej. 5500" required>
+
+        <label for="ticket">Importe a invertir:</label>
+        <select id="ticket" name="ticket">
+          <option value="5000">5.000 €</option>
+          <option value="10000" selected>10.000 €</option>
+          <option value="20000">20.000 €</option>
+        </select>
+
+        <label for="anios">Años de inversión:</label>
+        <input type="number" id="anios" name="anios" min="1" max="5" value="1" required>
+
+        <button type="submit" class="cta-button">Calcular deducción</button>
+      </form>
+      <div id="resultadoIRPF" class="resultado"></div>
+    </section>
+  </main>
+
+  <footer>
+    <img src="logo_contucuota_nuevo.png" alt="Logo ConTuCuota" loading="lazy">
+    <p>&copy; 2025 ConTuCuota &middot; <a href="mailto:info@contucuota.es" style="color: #a5d6a7;">info@contucuota.es</a></p>
+    <small>Simulaciones orientativas. Consulta con tu asesor fiscal. Las deducciones pueden variar según el art. 68.1 LIRPF.</small>
+  </footer>
+
+  <script>
+    AOS.init();
+    // JS del simulador irá aquí también
+  </script>
+</body>
+</html>
