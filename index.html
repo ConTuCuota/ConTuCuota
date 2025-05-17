@@ -376,7 +376,43 @@
     resultado.style.display = 'block';
   });
 
-  AOS.init({ once: true });
+  document.addEventListener('DOMContentLoaded', function () {
+    AOS.init({ once: true });
+
+    const form = document.getElementById("formCalculadora");
+    if (form) {
+      form.addEventListener("submit", function (e) {
+        e.preventDefault();
+        const cuota = parseFloat(document.getElementById("cuota").value);
+        const inversion = parseFloat(document.getElementById("ticket").value);
+        const anios = parseInt(document.getElementById("anios").value);
+        const resultado = document.getElementById("resultadoIRPF");
+
+        if (isNaN(cuota) || isNaN(inversion) || isNaN(anios) || cuota <= 0 || inversion <= 0 || anios <= 0) {
+          resultado.innerHTML = "<p style='color:red;'>Por favor, introduce valores válidos.</p>";
+          resultado.style.display = 'block';
+          return;
+        }
+
+        let totalInversion = inversion * anios;
+        let deduccionAnual = Math.min(inversion * 0.5, cuota);
+        let totalDeduccion = deduccionAnual * anios;
+        let recuperadoEmpresa = inversion * 0.25 * anios;
+        let remanenteEmpresa = inversion * 0.25 * anios;
+        let totalRecuperado = totalDeduccion + recuperadoEmpresa;
+
+        resultado.innerHTML = `
+          <p>Inversión total: <strong>${totalInversion.toLocaleString("es-ES", { style: "currency", currency: "EUR" })}</strong></p>
+          <p>Deducción IRPF total (estimada): <strong>${totalDeduccion.toLocaleString("es-ES", { style: "currency", currency: "EUR" })}</strong></p>
+          <p>Capital recuperado estimado: <strong>${recuperadoEmpresa.toLocaleString("es-ES", { style: "currency", currency: "EUR" })}</strong></p>
+          <p>Remanente en empresa: <strong>${remanenteEmpresa.toLocaleString("es-ES", { style: "currency", currency: "EUR" })}</strong></p>
+          <hr>
+          <p>Total recuperado: <strong>${totalRecuperado.toLocaleString("es-ES", { style: "currency", currency: "EUR" })}</strong></p>
+        `;
+        resultado.style.display = 'block';
+      });
+    }
+});
 </script>
 </body>
 </html>
