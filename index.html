@@ -351,7 +351,7 @@
 
       if (isNaN(cuota) || isNaN(inversion) || isNaN(anios) || cuota <= 0 || inversion <= 0 || anios <= 0) {
         resultado.innerHTML = "<p style='color:red;'>Por favor, introduce valores válidos.</p>";
-        resu
+        resultado.style.display = 'block';
         return;
       }
 
