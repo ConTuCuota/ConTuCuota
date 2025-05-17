@@ -307,7 +307,9 @@
     }
 
     if (window.flujoChart) window.flujoChart.destroy();
-    const ctx = document.getElementById('graficoFlujo').getContext('2d');
+    const canvas = document.getElementById('graficoFlujo');
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
     let totalInversion = 0, totalDeduccion = 0, totalRecuperado = 0;
     for (let i = 0; i < 8; i++) {
       totalInversion += dataInversion[i];
@@ -345,16 +347,8 @@
     });
   }
 
-  document.getElementById("formCalculadora").addEventListener("submit", function (e) {
-    e.preventDefault();
-    const cuota = parseFloat(document.getElementById("cuota").value);
-    const inversion = parseFloat(document.getElementById("ticket").value);
-    const anios = parseInt(document.getElementById("anios").value);
-    const resultado = document.getElementById("resultadoIRPF");
-
-    if (isNaN(cuota) || isNaN(inversion) || isNaN(anios) || cuota <= 0 || inversion <= 0 || anios <= 0) {
-      resultado.innerHTML = "<p style='color:red;'>Por favor, introduce valores válidos.</p>";
-      resultado.style.display = 'block';
+  
+    
       return;
     }
 
