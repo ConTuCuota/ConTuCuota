@@ -1,11 +1,35 @@
 const express = require('express');
+const helmet = require('helmet');
 const { jsPDF } = require('jspdf');
+const rateLimit = require('express-rate-limit');
 
 const app = express();
 app.use(express.json({ limit: '1mb' }));
+app.use(helmet());
+
+const limiter = rateLimit({ windowMs: 60 * 1000, max: 100 });
+app.use(limiter);
+
+function isValidPayload(data) {
+  if (!data) return false;
+  const { empresa, inversor, inversion } = data;
+  if (!empresa || typeof empresa.nombre !== 'string' || typeof empresa.cif !== 'string') {
+    return false;
+  }
+  if (!inversor || typeof inversor.nombre !== 'string' || typeof inversor.nif !== 'string') {
+    return false;
+  }
+  if (!inversion || typeof inversion.fecha !== 'string' || typeof inversion.importe !== 'number') {
+    return false;
+  }
+  return true;
+}
 
 app.post('/api/certificado', (req, res) => {
   const data = req.body || {};
+  if (!isValidPayload(data)) {
+    return res.status(400).json({ error: 'Datos de entrada inv\u00e1lidos' });
+  }
   try {
     const doc = new jsPDF();
 
@@ -37,6 +61,10 @@ app.post('/api/certificado', (req, res) => {
 });
 
 const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
-  console.log(`Certificado service listening on port ${PORT}`);
-});
+if (require.main === module) {
+  app.listen(PORT, () => {
+    console.log(`Certificado service listening on port ${PORT}`);
+  });
+}
+
+module.exports = app;
