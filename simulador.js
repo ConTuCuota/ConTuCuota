@@ -672,6 +672,10 @@ function calcularTIR(flujos) {
       df += -j * flujos[j] / Math.pow(1 + tir, j + 1);
     }
     
+    // Evitar división por cero si la derivada es demasiado pequeña
+    if (Math.abs(df) < 1e-8) {
+      break;
+    }
     // Actualizar TIR
     const nuevoTir = tir - f / df;
     
