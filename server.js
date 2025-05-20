@@ -1,8 +1,21 @@
 const express = require('express');
+const helmet = require('helmet');
 const { jsPDF } = require('jspdf');
 
 const app = express();
+app.use(helmet());
 app.use(express.json({ limit: '1mb' }));
+
+if (process.env.NODE_ENV === 'production') {
+  app.enable('trust proxy');
+  app.use((req, res, next) => {
+    const isHttps = req.secure || req.get('x-forwarded-proto') === 'https';
+    if (!isHttps) {
+      return res.redirect('https://' + req.headers.host + req.originalUrl);
+    }
+    next();
+  });
+}
 
 app.post('/api/certificado', (req, res) => {
   const data = req.body || {};
