@@ -744,17 +744,19 @@ function cambiarTab(tabId) {
 }
 
 // Inicialización
-document.addEventListener('DOMContentLoaded', function() {
-  // Configurar eventos para controles de escenarios
-  document.getElementById('escenario-tipo').addEventListener('change', cambiarTipoEscenario);
-  document.getElementById('escenario-tasa-recompra').addEventListener('input', actualizarParametrosEscenario);
-  document.getElementById('escenario-tasa-dividendos').addEventListener('input', actualizarParametrosEscenario);
-  document.getElementById('escenario-tasa-perdida').addEventListener('input', actualizarParametrosEscenario);
-  document.getElementById('escenario-anio-realizacion').addEventListener('change', actualizarParametrosEscenario);
-  
-  // Simular inversión inicial
-  simularInversionBasica();
-});
+if (typeof document !== 'undefined') {
+  document.addEventListener('DOMContentLoaded', function() {
+    // Configurar eventos para controles de escenarios
+    document.getElementById('escenario-tipo').addEventListener('change', cambiarTipoEscenario);
+    document.getElementById('escenario-tasa-recompra').addEventListener('input', actualizarParametrosEscenario);
+    document.getElementById('escenario-tasa-dividendos').addEventListener('input', actualizarParametrosEscenario);
+    document.getElementById('escenario-tasa-perdida').addEventListener('input', actualizarParametrosEscenario);
+    document.getElementById('escenario-anio-realizacion').addEventListener('change', actualizarParametrosEscenario);
+
+    // Simular inversión inicial
+    simularInversionBasica();
+  });
+}
 
 // Exportar funciones para pruebas en entorno Node
 if (typeof module !== 'undefined' && module.exports) {
