@@ -36,7 +36,6 @@ function simularInversionBasica() {
     tasaDeduccion: 0.5,                // 50% de deducción fiscal
     tasaRecuperacionCapital: 0.5,      // 50% de recuperación del capital
     inicioRecuperacion: 4,             // Año de inicio de recuperación (año 4)
-    duracionRecuperacion: 1,           // Duración de la recuperación (1 año)
     tasaDescuento: 0.03,               // Tasa de descuento para VAN (3%)
     inflacionAnual: 0.02               // Inflación anual estimada (2%)
   };
