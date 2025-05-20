@@ -3,7 +3,6 @@ const API_CACHE = 'contucuota-api-v1';
 const URLS_TO_CACHE = [
   './',
   './index.html',
-  './index-optimizado.html',
   './como-funciona.html',
   './plataforma.html',
   './certificados.html',
