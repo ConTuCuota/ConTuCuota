@@ -57,6 +57,16 @@ npm start
 
 El servidor escuchar\u00e1 en el puerto definido por la variable de entorno `PORT` (por defecto `3000`).
 
+## Protección con contraseña
+
+Para entornos de prueba se puede activar una capa de autenticación básica estableciendo la variable `PREVIEW_PASSWORD`. Ejecuta el servidor de la siguiente forma:
+
+```bash
+PREVIEW_PASSWORD=<tu_clave> npm start
+```
+
+Si la cabecera `Authorization` enviada por el cliente no coincide con la clave configurada, el servidor responderá con `401` y la cabecera `WWW-Authenticate` indicando el *realm* "Preview".
+
 ## Despliegue en producci\u00f3n
 
 En entornos productivos se recomienda utilizar un gestor de procesos como `pm2` o bien contenerizar la aplicaci\u00f3n.
