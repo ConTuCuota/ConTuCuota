@@ -1350,11 +1350,25 @@ function editarPerfil() {
 
 // Función para guardar el perfil
 function guardarPerfil() {
-  // Aquí se implementaría la lógica para enviar los datos al servidor
-  // Por ahora, solo mostraremos un mensaje de éxito
-  
-  alert('¡Tu perfil ha sido guardado con éxito! Pronto nos pondremos en contacto contigo.');
-  
-  // Volver a la página principal
-  window.location.href = 'index.html';
+  const url = tipoPerfilActual === 'inversor'
+    ? '/api/profiles/inversor'
+    : '/api/profiles/proyecto';
+
+  fetch(url, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(respuestas)
+  })
+    .then(response => {
+      if (!response.ok) throw new Error('Error en la solicitud');
+      return response.json();
+    })
+    .then(data => {
+      alert('¡Tu perfil ha sido guardado con éxito!');
+      window.location.href = 'index.html';
+    })
+    .catch(err => {
+      console.error(err);
+      alert('Hubo un problema al guardar tu perfil.');
+    });
 }

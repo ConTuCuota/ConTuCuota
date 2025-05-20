@@ -1,8 +1,42 @@
 const express = require('express');
 const { jsPDF } = require('jspdf');
+const fs = require('fs');
+const path = require('path');
 
 const app = express();
 app.use(express.json({ limit: '1mb' }));
+
+// Simple JSON file based persistence
+const DATA_FILE = path.join(__dirname, 'profiles.json');
+
+function loadData() {
+  try {
+    const raw = fs.readFileSync(DATA_FILE, 'utf8');
+    return JSON.parse(raw);
+  } catch (e) {
+    return { investors: [], projects: [] };
+  }
+}
+
+function saveData(data) {
+  fs.writeFileSync(DATA_FILE, JSON.stringify(data, null, 2));
+}
+
+function validateInvestor(body) {
+  const required = ['nombre', 'email', 'telefono'];
+  for (const field of required) {
+    if (!body[field]) return `Falta campo ${field}`;
+  }
+  return null;
+}
+
+function validateProject(body) {
+  const required = ['nombre_proyecto', 'email_proyecto', 'telefono_proyecto'];
+  for (const field of required) {
+    if (!body[field]) return `Falta campo ${field}`;
+  }
+  return null;
+}
 
 app.post('/api/certificado', (req, res) => {
   const data = req.body || {};
@@ -34,6 +68,40 @@ app.post('/api/certificado', (req, res) => {
     console.error('PDF generation error', e);
     return res.status(500).json({ error: 'Error generando el certificado' });
   }
+});
+
+app.post('/api/profiles/inversor', (req, res) => {
+  const error = validateInvestor(req.body || {});
+  if (error) {
+    return res.status(400).json({ error });
+  }
+  const data = loadData();
+  const profile = { ...req.body, id: Date.now() };
+  data.investors.push(profile);
+  saveData(data);
+  return res.status(201).json({ id: profile.id });
+});
+
+app.get('/api/profiles/inversor', (req, res) => {
+  const data = loadData();
+  res.json(data.investors);
+});
+
+app.post('/api/profiles/proyecto', (req, res) => {
+  const error = validateProject(req.body || {});
+  if (error) {
+    return res.status(400).json({ error });
+  }
+  const data = loadData();
+  const profile = { ...req.body, id: Date.now() };
+  data.projects.push(profile);
+  saveData(data);
+  return res.status(201).json({ id: profile.id });
+});
+
+app.get('/api/profiles/proyecto', (req, res) => {
+  const data = loadData();
+  res.json(data.projects);
 });
 
 const PORT = process.env.PORT || 3000;

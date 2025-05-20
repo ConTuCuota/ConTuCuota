@@ -3,6 +3,7 @@
   "short_name": "ConTuCuota",
   "description": "Invierte tu IRPF con ventajas fiscales",
   "start_url": "./index.html",
+  "scope": "./",
   "display": "standalone",
   "background_color": "#ffffff",
   "theme_color": "#4CAF50",
