@@ -714,11 +714,13 @@ function calcularPayback(flujosAcumulados) {
 // Calcular VAN (Valor Actual Neto)
 function calcularVAN(flujos, tasaDescuento) {
   let van = 0;
-  
+
+  // Los flujos se definen por año empezando en 1, por lo que cada
+  // elemento debe descontarse al final de ese año (i + 1)
   for (let i = 0; i < flujos.length; i++) {
-    van += flujos[i] / Math.pow(1 + tasaDescuento, i);
+    van += flujos[i] / Math.pow(1 + tasaDescuento, i + 1);
   }
-  
+
   return van;
 }
 
