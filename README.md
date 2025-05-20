@@ -48,9 +48,10 @@ El proyecto incluye diversas p\u00e1ginas HTML que conforman la interfaz p\u00fa
 
 ## Servidor Express
 
-Para ejecutar el servicio que genera certificados se utiliza `server.js`. Inícialo con:
+Para ejecutar el servicio que genera certificados se utiliza `server.js`. Primero instala las dependencias y luego inicia el servidor:
 
 ```bash
+npm install
 npm start
 ```
 

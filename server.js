@@ -5,6 +5,7 @@ const path = require('path');
 
 const app = express();
 app.use(express.json({ limit: '1mb' }));
+app.use(express.static(__dirname));
 
 // Simple JSON file based persistence
 const DATA_FILE = path.join(__dirname, 'profiles.json');
