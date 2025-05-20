@@ -23,7 +23,6 @@ const URLS_TO_CACHE = [
   './simulador.js',
   './plataforma.js',
   './certificados.js',
-  './certificados-corregido.js',
   './logo_contucuota.png',
   './favicon.png',
   './hero-background.jpg',
