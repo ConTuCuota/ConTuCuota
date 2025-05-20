@@ -748,3 +748,11 @@ document.addEventListener('DOMContentLoaded', function() {
   // Simular inversión inicial
   simularInversionBasica();
 });
+
+// Exportar funciones para pruebas en entorno Node
+if (typeof module !== 'undefined' && module.exports) {
+  module.exports = {
+    calcularFlujosPrincipales,
+    calcularTIR
+  };
+}
