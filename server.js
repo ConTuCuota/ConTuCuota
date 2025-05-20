@@ -5,6 +5,29 @@ const path = require('path');
 
 const app = express();
 app.use(express.json({ limit: '1mb' }));
+// Optional preview protection
+if (process.env.PREVIEW_PASSWORD) {
+  app.use((req, res, next) => {
+    const header = req.headers['authorization'];
+    if (!header || !header.startsWith('Basic ')) {
+      res.set('WWW-Authenticate', 'Basic realm="Preview"');
+      return res.status(401).end();
+    }
+    const encoded = header.slice('Basic '.length);
+    let decoded;
+    try {
+      decoded = Buffer.from(encoded, 'base64').toString('utf8');
+    } catch (e) {
+      decoded = '';
+    }
+    const password = decoded.includes(':') ? decoded.split(':')[1] : decoded;
+    if (password !== process.env.PREVIEW_PASSWORD) {
+      res.set('WWW-Authenticate', 'Basic realm="Preview"');
+      return res.status(401).end();
+    }
+    next();
+  });
+}
 app.use(express.static(__dirname));
 
 // Simple JSON file based persistence
