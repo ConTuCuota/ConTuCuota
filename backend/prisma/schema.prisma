@@ -1,0 +1,36 @@
+// Prisma schema for ConTuCuota backend
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model User {
+  id        Int      @id @default(autoincrement())
+  email     String   @unique
+  password  String
+  createdAt DateTime @default(now())
+}
+
+model Investor {
+  id        Int      @id @default(autoincrement())
+  nombre    String
+  email     String
+  telefono  String
+  projects  Project[]
+  createdAt DateTime @default(now())
+}
+
+model Project {
+  id               Int      @id @default(autoincrement())
+  nombre_proyecto  String
+  email_proyecto   String
+  telefono_proyecto String
+  investorId       Int?
+  investor         Investor? @relation(fields: [investorId], references: [id])
+  createdAt        DateTime  @default(now())
+}

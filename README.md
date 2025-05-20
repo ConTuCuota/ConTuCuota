@@ -82,3 +82,12 @@ pm2 start server.js --name contucuota
 docker build -t contucuota .
 docker run -p 3000:3000 --env PORT=3000 contucuota
 ```
+\n## Backend API
+
+El directorio `backend/` incluye un servidor Express con Prisma y
+autenticaci\u00f3n JWT. Proporciona endpoints REST para la gesti\u00f3n de
+usuarios, inversores, proyectos y la generaci\u00f3n de certificados en
+PDF.
+
+Consulta `backend/README.md` para conocer las variables de entorno
+necesarias, pasos de despliegue y comandos de desarrollo.
