@@ -106,7 +106,7 @@ function nextStep(currentStep) {
   }
   
   // Scroll al inicio del formulario
-  scrollToTop();
+  // scrollToTop();
   
   return true;
 }
@@ -123,7 +123,7 @@ function prevStep(currentStep) {
   updateProgressIndicator(currentStep - 1);
   
   // Scroll al inicio del formulario
-  scrollToTop();
+  // scrollToTop();
   
   return true;
 }
