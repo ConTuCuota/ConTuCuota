@@ -155,6 +155,16 @@
   margin-top: 2rem;
 }
 
+.download-hint {
+  margin-top: 1rem;
+  font-size: var(--font-size-sm);
+  color: var(--text-color);
+}
+
+.hidden {
+  display: none !important;
+}
+
 .prev-button,
 .next-button {
   padding: 0.8rem 1.5rem;

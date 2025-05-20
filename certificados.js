@@ -375,15 +375,39 @@ function generarCertificado() {
     formato: document.getElementById('certificado-formato')?.value || '',
     firma: document.getElementById('certificado-firma')?.value || ''
   };
-  
-  // Aquí iría la lógica para generar el PDF
-  // Por ahora, mostraremos un mensaje de éxito
-  alert('Certificado generado correctamente. En una implementación real, aquí se generaría el PDF y se ofrecería para descarga.');
-  
-  // En una implementación real, aquí se llamaría a una función para generar el PDF
-  // usando una biblioteca como jsPDF o se enviarían los datos al servidor
-  
-  console.log('Datos del certificado:', window.certificadoData);
+
+  // Enviar los datos al servicio de generación de PDF
+  fetch('/api/certificado', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(window.certificadoData)
+  })
+    .then(response => {
+      if (!response.ok) throw new Error('Error en la generación');
+      return response.blob();
+    })
+    .then(blob => {
+      const url = window.URL.createObjectURL(blob);
+      const link = document.getElementById('enlace-descarga');
+      if (link) {
+        link.href = url;
+        link.download = 'certificado.pdf';
+      }
+      document.getElementById('descarga-indicaciones')?.classList.remove('hidden');
+
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'certificado.pdf';
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+    })
+    .catch(error => {
+      alert('Error al generar el certificado.');
+      console.error(error);
+    });
 }
 
 // Función auxiliar para formatear fechas
