@@ -1,0 +1,26 @@
+{
+  "name": "ConTuCuota",
+  "short_name": "ConTuCuota",
+  "description": "Invierte tu IRPF con ventajas fiscales",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#4CAF50",
+  "icons": [
+    {
+      "src": "logo_contucuota.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    },
+    {
+      "src": "logo_contucuota.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "favicon.png",
+      "sizes": "64x64",
+      "type": "image/png"
+    }
+  ]
+}

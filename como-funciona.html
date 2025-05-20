@@ -18,6 +18,7 @@
   <link rel="icon" href="./favicon.png" sizes="16x16" type="image/png">
   <link rel="icon" href="./favicon.png" sizes="32x32" type="image/png">
   <link rel="apple-touch-icon" href="./favicon.png">
+  <link rel="manifest" href="manifest.webmanifest">
   <!-- Fuentes y estilos -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -337,6 +338,9 @@
         });
       }
       
+      if ("serviceWorker" in navigator) {
+        navigator.serviceWorker.register("./serviceWorker.js");
+      }
       // Configurar el comportamiento de las FAQs
       const faqItems = document.querySelectorAll('.faq-item');
       faqItems.forEach(item => {
