@@ -36,3 +36,39 @@ npm test
 
 Toda ayuda es bienvenida para mejorar la plataforma y sus
 funcionalidades.
+
+## P\u00e1ginas principales
+
+El proyecto incluye diversas p\u00e1ginas HTML que conforman la interfaz p\u00fablica:
+
+- **`index.html`**: p\u00e1gina de inicio con informaci\u00f3n general del proyecto y enlaces a las dem\u00e1s secciones.
+- **`simulador.html`**: permite introducir par\u00e1metros de inversi\u00f3n y visualizar los flujos financieros resultantes.
+- **`certificados.html`**: interfaz para generar certificados fiscales en PDF a trav\u00e9s del servicio Express.
+- **`plataforma.html`**: describe la plataforma que conecta a inversores y proyectos en busca de financiaci\u00f3n.
+
+## Servidor Express
+
+Para ejecutar el servicio que genera certificados se utiliza `server.js`. Inícialo con:
+
+```bash
+npm start
+```
+
+El servidor escuchar\u00e1 en el puerto definido por la variable de entorno `PORT` (por defecto `3000`).
+
+## Despliegue en producci\u00f3n
+
+En entornos productivos se recomienda utilizar un gestor de procesos como `pm2` o bien contenerizar la aplicaci\u00f3n.
+
+### Ejemplo con pm2
+
+```bash
+pm2 start server.js --name contucuota
+```
+
+### Ejemplo b\u00e1sico con Docker
+
+```bash
+docker build -t contucuota .
+docker run -p 3000:3000 --env PORT=3000 contucuota
+```
