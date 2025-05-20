@@ -20,8 +20,7 @@ framework de pruebas `jest`.
 ## Ejecuci\u00f3n de pruebas
 
 El proyecto cuenta con pruebas autom\u00e1ticas ubicadas en la carpeta
-`tests`. Para ejecutarlas utiliza el siguiente comando:
-
+`tests`. Antes de ejecutarlas asegúrate de instalar las dependencias con `npm install` — durante el desarrollo se utilizó Node.js 18. Luego utiliza el siguiente comando:
 ```bash
 npm test
 ```
