@@ -201,6 +201,14 @@
   margin-bottom: 1.5rem;
 }
 
+/* Contenedor para los requisitos de verificación (versión revisada) */
+.verification-section {
+  background-color: var(--background-light);
+  padding: 1.5rem;
+  border-radius: var(--border-radius);
+  margin-bottom: 1.5rem;
+}
+
 .verification-item {
   display: flex;
   align-items: flex-start;
