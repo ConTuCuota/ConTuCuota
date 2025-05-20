@@ -318,6 +318,11 @@ function actualizarModuloEscenarios(flujosPrincipales) {
   document.getElementById('escenario-tasa-dividendos').value = escenarioRemanente.tasaDividendos * 100;
   document.getElementById('escenario-tasa-perdida').value = escenarioRemanente.tasaPerdida * 100;
   document.getElementById('escenario-anio-realizacion').value = escenarioRemanente.anioRealizacion;
+
+  // Reflejar valores en las etiquetas de los sliders
+  document.querySelector('#control-tasa-recompra .valor-slider').textContent = (escenarioRemanente.tasaRecompra * 100).toFixed(1) + '%';
+  document.querySelector('#control-tasa-dividendos .valor-slider').textContent = (escenarioRemanente.tasaDividendos * 100).toFixed(1) + '%';
+  document.querySelector('#control-tasa-perdida .valor-slider').textContent = (escenarioRemanente.tasaPerdida * 100).toFixed(0) + '%';
   
   // Calcular y mostrar resultados del escenario
   calcularResultadosEscenario();
@@ -365,6 +370,11 @@ function actualizarParametrosEscenario() {
   escenarioRemanente.tasaDividendos = parseFloat(document.getElementById('escenario-tasa-dividendos').value) / 100;
   escenarioRemanente.tasaPerdida = parseFloat(document.getElementById('escenario-tasa-perdida').value) / 100;
   escenarioRemanente.anioRealizacion = parseInt(document.getElementById('escenario-anio-realizacion').value);
+
+  // Actualizar los textos de los sliders
+  document.querySelector('#control-tasa-recompra .valor-slider').textContent = (escenarioRemanente.tasaRecompra * 100).toFixed(1) + '%';
+  document.querySelector('#control-tasa-dividendos .valor-slider').textContent = (escenarioRemanente.tasaDividendos * 100).toFixed(1) + '%';
+  document.querySelector('#control-tasa-perdida .valor-slider').textContent = (escenarioRemanente.tasaPerdida * 100).toFixed(0) + '%';
   
   calcularResultadosEscenario();
 }
