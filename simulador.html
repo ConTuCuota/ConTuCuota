@@ -67,14 +67,18 @@
         </p>
         <div class="simulator-container">
           <div class="simulator-controls">
-            <label for="sim-ticket">Ticket anual (€):</label>
-            <select id="sim-ticket" aria-label="Selecciona el ticket anual">
-              <option value="5000">5.000 €</option>
-              <option selected value="10000">10.000 €</option>
-              <option value="20000">20.000 €</option>
-            </select>
-            <label for="sim-anios">Años de inversión (1 a 5):</label>
-            <input id="sim-anios" max="5" min="1" type="number" value="5" aria-label="Selecciona los años de inversión" />
+            <div class="control-grupo">
+              <label for="sim-ticket">Ticket anual (€):</label>
+              <select id="sim-ticket" aria-label="Selecciona el ticket anual">
+                <option value="5000">5.000 €</option>
+                <option selected value="10000">10.000 €</option>
+                <option value="20000">20.000 €</option>
+              </select>
+            </div>
+            <div class="control-grupo">
+              <label for="sim-anios">Años de inversión (1 a 5):</label>
+              <input id="sim-anios" max="5" min="1" type="number" value="5" aria-label="Selecciona los años de inversión" />
+            </div>
             <button class="cta-button" onclick="simularInversionBasica()" aria-label="Simular flujo de caja">Simular flujo de caja</button>
           </div>
           
