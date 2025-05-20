@@ -1,4 +1,5 @@
-const CACHE_NAME = 'contucuota-v1';
+const CACHE_NAME = 'contucuota-v2';
+const API_CACHE = 'contucuota-api-v1';
 const URLS_TO_CACHE = [
   './',
   './index.html',
@@ -52,9 +53,21 @@ self.addEventListener('activate', event => {
 });
 
 self.addEventListener('fetch', event => {
-  event.respondWith(
-    caches.match(event.request).then(response => {
-      return response || fetch(event.request);
-    })
-  );
+  if (event.request.url.includes('/api/profiles')) {
+    event.respondWith(
+      fetch(event.request)
+        .then(response => {
+          const cloned = response.clone();
+          caches.open(API_CACHE).then(cache => cache.put(event.request, cloned));
+          return response;
+        })
+        .catch(() => caches.match(event.request))
+    );
+  } else {
+    event.respondWith(
+      caches.match(event.request).then(response => {
+        return response || fetch(event.request);
+      })
+    );
+  }
 });
