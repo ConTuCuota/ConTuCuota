@@ -1,0 +1,351 @@
+/* Mejoras de coherencia textual y calidad visual */
+
+/* Tipografía mejorada */
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: #333;
+  line-height: 1.6;
+}
+
+/* Mejoras en jerarquía visual */
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 700;
+  line-height: 1.3;
+  margin-top: 0;
+  color: #222;
+}
+
+.section-title {
+  position: relative;
+  padding-bottom: 1rem;
+  margin-bottom: 2rem;
+}
+
+.section-title::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 3px;
+  background-color: #4CAF50;
+  border-radius: 3px;
+}
+
+/* Mejoras en botones y enlaces */
+.cta-button, .secondary-button {
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  border-radius: 6px;
+  transition: all 0.3s ease;
+  padding: 0.85rem 1.75rem;
+  box-shadow: 0 2px 10px rgba(76, 175, 80, 0.2);
+}
+
+.cta-button:hover {
+  background-color: #388E3C;
+  box-shadow: 0 4px 15px rgba(76, 175, 80, 0.3);
+  transform: translateY(-2px);
+}
+
+.secondary-button:hover {
+  background-color: rgba(76, 175, 80, 0.15);
+  box-shadow: 0 2px 10px rgba(76, 175, 80, 0.1);
+  transform: translateY(-2px);
+}
+
+/* Mejoras en tarjetas y secciones */
+.sector, .tool-card, .feature-card, .metric-card {
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
+}
+
+.sector:hover, .tool-card:hover, .feature-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+}
+
+/* Mejoras en formularios */
+input, select, textarea {
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  padding: 0.85rem 1rem;
+  width: 100%;
+  font-family: inherit;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+input:focus, select:focus, textarea:focus {
+  border-color: #4CAF50;
+  box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.2);
+  outline: none;
+}
+
+/* Mejoras en espaciado y ritmo visual */
+.section-padding {
+  padding: 5rem 0;
+}
+
+.section-text {
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 2.5rem;
+  font-size: 1.1rem;
+  color: #555;
+}
+
+/* Mejoras en la sección hero */
+.hero {
+  position: relative;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('./hero-background.jpg');
+  background-size: cover;
+  background-position: center;
+  color: white;
+  padding: 8rem 0;
+  text-align: center;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(56, 142, 60, 0.7) 0%, rgba(76, 175, 80, 0.4) 100%);
+  z-index: 1;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+.hero-content h1 {
+  font-size: 3rem;
+  margin-bottom: 1.5rem;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.hero-content p {
+  font-size: 1.25rem;
+  margin-bottom: 2rem;
+  text-shadow: 0 1px 5px rgba(0, 0, 0, 0.2);
+}
+
+/* Mejoras en la sección de pasos */
+.process-steps {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  margin-top: 3rem;
+}
+
+.step {
+  background-color: white;
+  border-radius: 8px;
+  padding: 2rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+
+.step-number {
+  width: 50px;
+  height: 50px;
+  background-color: #4CAF50;
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin: 0 auto 1.5rem;
+}
+
+.step h3 {
+  margin-bottom: 1rem;
+  color: #333;
+}
+
+.step p {
+  color: #666;
+  line-height: 1.6;
+}
+
+/* Mejoras en la sección de sectores */
+.sectors-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-top: 3rem;
+}
+
+.sector {
+  background-color: white;
+  text-align: center;
+}
+
+.sector-image {
+  height: 180px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.sector-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.sector:hover .sector-image img {
+  transform: scale(1.05);
+}
+
+.sector h4 {
+  margin: 1.5rem 0 0.75rem;
+  color: #333;
+  padding: 0 1.5rem;
+}
+
+.sector p {
+  color: #666;
+  padding: 0 1.5rem 1.5rem;
+  line-height: 1.6;
+}
+
+/* Mejoras en el footer */
+footer {
+  background-color: #222;
+  color: white;
+  padding: 4rem 0;
+  text-align: center;
+}
+
+.footer-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+.footer-content img {
+  margin-bottom: 1.5rem;
+}
+
+.footer-content p {
+  margin-bottom: 1.5rem;
+}
+
+.footer-content a {
+  color: #4CAF50;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.footer-content a:hover {
+  color: #66BB6A;
+}
+
+.footer-content small {
+  display: block;
+  margin-top: 2rem;
+  color: #aaa;
+  font-size: 0.85rem;
+}
+
+/* Mejoras en tooltips */
+.tooltip {
+  position: relative;
+  display: inline-block;
+  border-bottom: 1px dotted #4CAF50;
+  cursor: help;
+  color: #4CAF50;
+}
+
+.tooltip .tooltip-text {
+  visibility: hidden;
+  width: 240px;
+  background-color: #333;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 0.75rem;
+  position: absolute;
+  z-index: 1;
+  bottom: 125%;
+  left: 50%;
+  transform: translateX(-50%);
+  opacity: 0;
+  transition: opacity 0.3s;
+  font-size: 0.9rem;
+  line-height: 1.4;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.tooltip .tooltip-text::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: #333 transparent transparent transparent;
+}
+
+.tooltip:hover .tooltip-text {
+  visibility: visible;
+  opacity: 1;
+}
+
+/* Mejoras en la sección de aviso legal */
+.section-notice {
+  background-color: #f9f9f9;
+  padding: 4rem 0;
+}
+
+/* Mejoras en la sección de calculadora */
+.resultado {
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  padding: 2rem;
+  margin-top: 2rem;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+}
+
+.resultado h3 {
+  color: #4CAF50;
+  margin-bottom: 1rem;
+}
+
+/* Animaciones suaves */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.fade-in {
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+/* Mejoras en la sección CTA */
+.section-cta {
+  background-color: #f5f5f5;
+  background-image: linear-gradient(135deg, #f5f5f5 0%, #e0e0e0 100%);
+  padding: 5rem 0;
+  text-align: center;
+}

@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Simulador de inversión con ventajas fiscales. Visualiza los flujos financieros y calcula tu rentabilidad con la deducción del IRPF.">
+  <meta name="keywords" content="simulador inversión, IRPF, deducción fiscal, rentabilidad, flujo de caja, ConTuCuota">
+  <meta property="og:title" content="ConTuCuota | Simulador de Inversión">
+  <meta property="og:description" content="Simula tu inversión con ventajas fiscales. Visualiza flujos financieros y calcula tu rentabilidad con la deducción del IRPF.">
+  <meta property="og:image" content="./logo_contucuota.png">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://contucuota.es/simulador.html">
+  <meta name="theme-color" content="#4CAF50">
+  <meta name="robots" content="index, follow">
+  <title>ConTuCuota | Simulador de Inversión</title>
+  <!-- Favicon con diferentes tamaños para asegurar compatibilidad -->
+  <link rel="icon" href="./favicon.png" type="image/png">
+  <link rel="icon" href="./favicon.png" sizes="16x16" type="image/png">
+  <link rel="icon" href="./favicon.png" sizes="32x32" type="image/png">
+  <link rel="apple-touch-icon" href="./favicon.png">
+  <!-- Fuentes y estilos -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./styles.css">
+  <link rel="stylesheet" href="./estilos-simulador.css">
+  <link rel="stylesheet" href="./estilos-adicionales.css">
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
+  <!-- Carga diferida de scripts no críticos -->
+  <script defer src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script defer src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script defer src="./simulador.js"></script>
+</head>
+<body>
+  <!-- Enlace de accesibilidad para saltar al contenido principal -->
+  <a href="#main-content" class="skip-link">Saltar al contenido principal</a>
+
+  <header class="header">
+    <div class="logo" aria-label="Logo ConTuCuota">
+      <a href="index.html">
+        <img src="./logo_contucuota.png" alt="Logo ConTuCuota" width="60" height="60" loading="lazy" onerror="this.onerror=null; this.src='https://via.placeholder.com/60x60/4CAF50/FFFFFF?text=CTC';">
+        <strong>ConTuCuota</strong>
+      </a>
+    </div>
+    <nav aria-label="Menú principal">
+      <a href="index.html#como-funciona">Cómo funciona</a>
+      <a href="index.html#proyectos">Proyectos</a>
+      <a href="simulador.html" class="active">Simulador</a>
+      <a href="plataforma.html">Plataforma</a>
+      <a href="index.html#contacto">Contacto</a>
+    </nav>
+  </header>
+
+  <main id="main-content">
+    <section class="hero simulator-hero" aria-labelledby="titulo-hero">
+      <div class="hero-content">
+        <h1 id="titulo-hero" data-aos="fade-down">Simulador de Inversión</h1>
+        <p data-aos="fade-up">Visualiza los flujos financieros de tu inversión con ventajas fiscales y calcula tu rentabilidad potencial.</p>
+      </div>
+    </section>
+
+    <section id="simulacion-visual" class="section-light" data-aos="fade-up">
+      <div class="container">
+        <h2 class="section-title">Simulador de Inversión Recurrente</h2>
+        <p class="section-text">
+          Selecciona el ticket anual y años de inversión para visualizar los flujos financieros. Se deduce el 50% al año siguiente y se recupera el 50% del capital desde el año 4 mediante recompra pactada.
+        </p>
+        <div class="simulator-container">
+          <div class="simulator-controls">
+            <label for="sim-ticket">Ticket anual (€):</label>
+            <select id="sim-ticket" aria-label="Selecciona el ticket anual">
+              <option value="5000">5.000 €</option>
+              <option selected value="10000">10.000 €</option>
+              <option value="20000">20.000 €</option>
+            </select>
+            <label for="sim-anios">Años de inversión (1 a 5):</label>
+            <input id="sim-anios" max="5" min="1" type="number" value="5" aria-label="Selecciona los años de inversión" />
+            <button class="cta-button" onclick="simularInversionBasica()" aria-label="Simular flujo de caja">Simular flujo de caja</button>
+          </div>
+          
+          <!-- Resumen básico -->
+          <div class="resumen-basico">
+            <div class="resumen-item">
+              <h4>Inversión total</h4>
+              <p id="resumen-inversion-total">0 €</p>
+            </div>
+            <div class="resumen-item">
+              <h4>Deducción fiscal</h4>
+              <p id="resumen-deduccion-total">0 €</p>
+            </div>
+            <div class="resumen-item">
+              <h4>Recuperación capital</h4>
+              <p id="resumen-recuperacion-total">0 €</p>
+            </div>
+            <div class="resumen-item">
+              <h4>Capital remanente</h4>
+              <p id="resumen-capital-remanente">0 €</p>
+            </div>
+          </div>
+          <p id="resumen-texto" class="resumen-texto">
+            Selecciona los parámetros y haz clic en "Simular flujo de caja" para ver los resultados.
+          </p>
+          
+          <div class="simulator-tabs">
+            <button class="tab-button active" onclick="cambiarTab('grafico')" aria-pressed="true">Gráfico</button>
+            <button class="tab-button" onclick="cambiarTab('tabla')" aria-pressed="false">Tabla detallada</button>
+            <button class="tab-button" onclick="cambiarTab('metricas')" aria-pressed="false">Métricas financieras</button>
+          </div>
+          <div id="tab-grafico" class="tab-content active" role="tabpanel" aria-labelledby="tab-grafico">
+            <div class="chart-container-wrapper">
+              <canvas id="graficoFlujoPrincipal" aria-hidden="true" class="chart-container"></canvas>
+            </div>
+          </div>
+          <div id="tab-tabla" class="tab-content" role="tabpanel" aria-labelledby="tab-tabla">
+            <div class="table-container">
+              <table id="tablaFlujosPrincipales" class="data-table">
+                <thead>
+                  <tr>
+                    <th scope="col">Año</th>
+                    <th scope="col">Aportación</th>
+                    <th scope="col">Deducción</th>
+                    <th scope="col">Recuperación</th>
+                    <th scope="col">Flujo neto</th>
+                    <th scope="col">Acumulado</th>
+                    <th scope="col">Capital en empresa</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <!-- Se rellena con JavaScript -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <div id="tab-metricas" class="tab-content" role="tabpanel" aria-labelledby="tab-metricas">
+            <div class="metrics-container">
+              <div class="metric-card" data-aos="fade-up" data-aos-delay="100">
+                <h4>ROI</h4>
+                <p id="metrica-roi">Calculando...</p>
+                <small>Retorno sobre inversión total</small>
+              </div>
+              <div class="metric-card" data-aos="fade-up" data-aos-delay="150">
+                <h4>TIR</h4>
+                <p id="metrica-tir">Calculando...</p>
+                <small>Tasa Interna de Retorno</small>
+              </div>
+              <div class="metric-card" data-aos="fade-up" data-aos-delay="200">
+                <h4>Payback</h4>
+                <p id="metrica-payback">Calculando...</p>
+                <small>Tiempo de recuperación</small>
+              </div>
+              <div class="metric-card" data-aos="fade-up" data-aos-delay="250">
+                <h4>VAN</h4>
+                <p id="metrica-van">Calculando...</p>
+                <small>Valor Actual Neto (3% descuento)</small>
+              </div>
+              <div class="metric-card" data-aos="fade-up" data-aos-delay="300">
+                <h4>Múltiplo</h4>
+                <p id="metrica-multiplo">Calculando...</p>
+                <small>Múltiplo sobre capital invertido</small>
+              </div>
+              <div class="metric-card" data-aos="fade-up" data-aos-delay="350">
+                <h4>Rentabilidad anualizada</h4>
+                <p id="metrica-rentabilidad">Calculando...</p>
+                <small>CAGR (Tasa de crecimiento anual compuesto)</small>
+              </div>
+            </div>
+          </div>
+          
+          <div id="explicacionSim" class="simulator-explanation">
+            <p><strong>Interpretación:</strong></p>
+            <p>La barra roja representa el dinero aportado (flujo negativo), la verde la deducción fiscal recuperada al año siguiente, y la azul el capital recuperado a partir del año 4.</p>
+            <p>La línea punteada rosa muestra el capital que permanece en la empresa en cada momento.</p>
+          </div>
+          
+          <!-- Módulo de escenarios para capital remanente -->
+          <div id="modulo-escenarios" class="escenarios-modulo hidden">
+            <h3 class="subsection-title">Escenarios para el Capital Remanente</h3>
+            
+            <div class="escenarios-intro">
+              <p>El capital remanente es el 50% del capital que permanece en las empresas tras la recuperación inicial. 
+              Puedes simular diferentes escenarios para este capital:</p>
+              <div class="capital-remanente-info">
+                <span>Capital remanente actual:</span>
+                <strong id="capital-remanente-valor">0 €</strong>
+              </div>
+            </div>
+            
+            <div class="escenarios-controles">
+              <div class="control-grupo">
+                <label for="escenario-tipo">Tipo de escenario:</label>
+                <select id="escenario-tipo" class="escenario-selector">
+                  <option value="recompra">Recompra pactada</option>
+                  <option value="dividendos">Dividendos anuales</option>
+                  <option value="mixto">Mixto (dividendos + recompra)</option>
+                  <option value="perdida">Pérdida patrimonial</option>
+                </select>
+              </div>
+              
+              <div id="control-tasa-recompra" class="control-escenario control-grupo">
+                <label for="escenario-tasa-recompra">Rentabilidad de recompra (%):</label>
+                <input type="range" id="escenario-tasa-recompra" min="0" max="20" value="8" step="0.5" class="slider">
+                <span class="valor-slider">8%</span>
+              </div>
+              
+              <div id="control-tasa-dividendos" class="control-escenario control-grupo hidden">
+                <label for="escenario-tasa-dividendos">Tasa de dividendos anual (%):</label>
+                <input type="range" id="escenario-tasa-dividendos" min="0" max="15" value="5" step="0.5" class="slider">
+                <span class="valor-slider">5%</span>
+              </div>
+              
+              <div id="control-tasa-perdida" class="control-escenario control-grupo hidden">
+                <label for="escenario-tasa-perdida">Porcentaje de pérdida (%):</label>
+                <input type="range" id="escenario-tasa-perdida" min="0" max="100" value="30" step="5" class="slider">
+                <span class="valor-slider">30%</span>
+              </div>
+              
+              <div id="control-anio-realizacion" class="control-escenario control-grupo">
+                <label for="escenario-anio-realizacion">Año de realización:</label>
+                <select id="escenario-anio-realizacion">
+                  <option value="5">Año 5</option>
+                  <option value="6">Año 6</option>
+                  <option value="7">Año 7</option>
+                  <option value="8" selected>Año 8</option>
+                  <option value="9">Año 9</option>
+                  <option value="10">Año 10</option>
+                </select>
+              </div>
+            </div>
+            
+            <div class="escenarios-resultados">
+              <h4>Resultados del escenario</h4>
+              <div class="resultado-grupo">
+                <span>Descripción:</span>
+                <p id="escenario-descripcion">Recompra pactada con rentabilidad del 8% en el año 8</p>
+              </div>
+              <div class="resultado-grupo">
+                <span>Resultado capital:</span>
+                <strong id="escenario-resultado-capital">0 €</strong>
+              </div>
+              <div class="resultado-grupo">
+                <span>Flujo anual:</span>
+                <strong id="escenario-flujo-anual">0 €</strong>
+              </div>
+            </div>
+            
+            <div class="escenarios-grafico">
+              <h4>Flujos combinados (básico + escenario)</h4>
+              <div class="chart-container-wrapper">
+                <canvas id="graficoFlujoCombinado" aria-hidden="true" class="chart-container"></canvas>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-highlight" data-aos="fade-up">
+      <div class="container">
+        <h2 class="section-title">Ventajas del Simulador</h2>
+        <div class="features-grid">
+          <div class="feature-card" data-aos="fade-up" data-aos-delay="100">
+            <div class="feature-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="2" x2="12" y2="6"></line><line x1="12" y1="18" x2="12" y2="22"></line><line x1="4.93" y1="4.93" x2="7.76" y2="7.76"></line><line x1="16.24" y1="16.24" x2="19.07" y2="19.07"></line><line x1="2" y1="12" x2="6" y2="12"></line><line x1="18" y1="12" x2="22" y2="12"></line><line x1="4.93" y1="19.07" x2="7.76" y2="16.24"></line><line x1="16.24" y1="7.76" x2="19.07" y2="4.93"></line></svg>
+            </div>
+            <h3>Visualización clara</h3>
+            <p>Gráficos interactivos que muestran claramente los flujos de entrada y salida de capital a lo largo del tiempo.</p>
+          </div>
+          <div class="feature-card" data-aos="fade-up" data-aos-delay="150">
+            <div class="feature-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"></path><path d="M18.7 8l-5.1 5.2-2.8-2.7L7 14.3"></path></svg>
+            </div>
+            <h3>Métricas financieras</h3>
+            <p>Cálculo automático de indicadores clave como ROI, TIR, VAN y tiempo de recuperación de la inversión.</p>
+          </div>
+          <div class="feature-card" data-aos="fade-up" data-aos-delay="200">
+            <div class="feature-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+            </div>
+            <h3>Escenarios personalizables</h3>
+            <p>Simula diferentes escenarios para el capital remanente, incluyendo recompras, dividendos o combinaciones.</p>
+          </div>
+          <div class="feature-card" data-aos="fade-up" data-aos-delay="250">
+            <div class="feature-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><line x1="3" y1="9" x2="21" y2="9"></line><line x1="9" y1="21" x2="9" y2="9"></line></svg>
+            </div>
+            <h3>Tabla detallada</h3>
+            <p>Visualización año por año de todos los flujos financieros para un análisis detallado de tu inversión.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-cta" data-aos="fade-up">
+      <div class="container">
+        <h2 class="section-title">¿Listo para invertir?</h2>
+        <p class="section-text">Ahora que has simulado tu inversión, da el siguiente paso y contacta con nosotros para recibir asesoramiento personalizado.</p>
+        <div class="cta-buttons">
+          <a href="index.html#contacto" class="cta-button">Contactar ahora</a>
+          <a href="plataforma.html" class="secondary-button">Crear perfil de inversor</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="aviso-legal" class="section-notice" data-aos="fade-up">
+      <div class="container">
+        <p><strong>Aviso legal y responsabilidad</strong></p>
+        <p>La información proporcionada en este simulador tiene carácter meramente informativo y no constituye asesoramiento fiscal, financiero o legal. Las simulaciones son orientativas y pueden variar según circunstancias individuales. Consulta siempre con un asesor profesional antes de tomar decisiones de inversión.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-content">
+      <a href="index.html">
+        <img src="./logo_contucuota.png" alt="Logo ConTuCuota" width="150" height="75" loading="lazy" onerror="this.onerror=null; this.src='https://via.placeholder.com/150x75/4CAF50/FFFFFF?text=ConTuCuota';">
+      </a>
+      <p>&copy; 2025 ConTuCuota &middot; <a href="mailto:info@contucuota.es">info@contucuota.es</a></p>
+      <div class="footer-links">
+        <a href="index.html">Inicio</a>
+        <a href="index.html#como-funciona">Cómo funciona</a>
+        <a href="index.html#proyectos">Proyectos</a>
+        <a href="simulador.html">Simulador</a>
+        <a href="plataforma.html">Plataforma</a>
+        <a href="index.html#contacto">Contacto</a>
+      </div>
+      <small>Simulaciones orientativas. Consulta con tu asesor fiscal. Las deducciones pueden variar según el art. 68.1 LIRPF.</small>
+    </div>
+  </footer>
+
+  <script>
+    // Inicialización de AOS (Animate On Scroll)
+    document.addEventListener('DOMContentLoaded', function() {
+      AOS.init({
+        duration: 800,
+        once: true,
+        offset: 100
+      });
+      
+      // Iniciar simulación automáticamente al cargar la página
+      setTimeout(function() {
+        simularInversionBasica();
+      }, 500);
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,46 @@
+/* Estilos adicionales para mejorar la presentación */
+
+/* Estilo para el checkbox de privacidad */
+.privacy-consent {
+  display: flex;
+  align-items: flex-start;
+  margin: 1.5rem 0;
+}
+
+.privacy-consent input[type="checkbox"] {
+  margin-top: 0.3rem;
+  margin-right: 0.8rem;
+}
+
+.privacy-consent label {
+  font-size: 0.9rem;
+  line-height: 1.4;
+}
+
+.privacy-consent a {
+  color: var(--primary-color);
+  text-decoration: underline;
+}
+
+/* Mejoras en el aviso legal */
+.section-notice {
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin-top: 2rem;
+  border-left: 4px solid var(--primary-color);
+}
+
+.section-notice p {
+  margin-bottom: 1rem;
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+.section-notice p:last-child {
+  margin-bottom: 0;
+}
+
+.section-notice strong {
+  color: var(--text-dark);
+}

@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Generación de certificados fiscales para inversiones en startups. Crea documentos válidos para la deducción fiscal según el art. 68.1 LIRPF.">
+  <meta name="keywords" content="certificados fiscales, IRPF, deducción fiscal, startups, inversión, ConTuCuota">
+  <meta property="og:title" content="ConTuCuota | Generación de Certificados Fiscales">
+  <meta property="og:description" content="Genera certificados fiscales válidos para la deducción del IRPF por inversión en startups según la Ley 35/2006.">
+  <meta property="og:image" content="./logo_contucuota.png">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://contucuota.es/certificados.html">
+  <meta name="theme-color" content="#4CAF50">
+  <meta name="robots" content="index, follow">
+  <title>ConTuCuota | Generación de Certificados Fiscales</title>
+  <!-- Favicon con diferentes tamaños para asegurar compatibilidad -->
+  <link rel="icon" href="./favicon.png" type="image/png">
+  <link rel="icon" href="./favicon.png" sizes="16x16" type="image/png">
+  <link rel="icon" href="./favicon.png" sizes="32x32" type="image/png">
+  <link rel="apple-touch-icon" href="./favicon.png">
+  <!-- Fuentes y estilos -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./styles.css">
+  <link rel="stylesheet" href="./estilos-adicionales.css">
+  <link rel="stylesheet" href="./menu-mejorado.css">
+  <link rel="stylesheet" href="./optimizaciones.css">
+  <link rel="stylesheet" href="./certificados.css">
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
+  <!-- Carga diferida de scripts no críticos -->
+  <script defer src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script defer src="./certificados.js"></script>
+</head>
+<body>
+  <!-- Enlace de accesibilidad para saltar al contenido principal -->
+  <a href="#main-content" class="skip-link">Saltar al contenido principal</a>
+
+  <header class="header">
+    <div class="logo" aria-label="Logo ConTuCuota">
+      <a href="index.html">
+        <img src="./logo_contucuota.png" alt="Logo ConTuCuota" width="60" height="60" loading="lazy" onerror="this.onerror=null; this.src='https://via.placeholder.com/60x60/4CAF50/FFFFFF?text=CTC';">
+        <strong>ConTuCuota</strong>
+      </a>
+    </div>
+    <nav aria-label="Menú principal">
+      <a href="index.html#como-funciona">Cómo funciona</a>
+      <a href="index.html#proyectos">Proyectos</a>
+      <a href="simulador.html">Simulador</a>
+      <a href="plataforma.html">Plataforma</a>
+      <a href="certificados.html" class="active">Certificados</a>
+      <a href="index.html#contacto">Contacto</a>
+    </nav>
+  </header>
+
+  <main id="main-content">
+    <section class="hero certificate-hero" aria-labelledby="titulo-hero">
+      <div class="hero-content">
+        <h1 id="titulo-hero" data-aos="fade-down">Generación de Certificados Fiscales</h1>
+        <p data-aos="fade-up">Crea certificados válidos para que tus inversores puedan deducir su inversión en el IRPF según el artículo 68.1 de la Ley del IRPF.</p>
+      </div>
+    </section>
+
+    <section id="informacion-legal" class="section-light" data-aos="fade-up">
+      <div class="container">
+        <h2 class="section-title">¿Cómo funciona la deducción fiscal?</h2>
+        <div class="info-cards">
+          <div class="info-card" data-aos="fade-up" data-aos-delay="100">
+            <div class="info-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"></path></svg>
+            </div>
+            <h3>Deducción del 50%</h3>
+            <p>Los inversores pueden deducir hasta el 50% de las cantidades invertidas en empresas de nueva o reciente creación.</p>
+          </div>
+          <div class="info-card" data-aos="fade-up" data-aos-delay="150">
+            <div class="info-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+            </div>
+            <h3>Permanencia mínima</h3>
+            <p>La inversión debe mantenerse un mínimo de 3 años para conservar el derecho a la deducción.</p>
+          </div>
+          <div class="info-card" data-aos="fade-up" data-aos-delay="200">
+            <div class="info-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"></path><rect x="8" y="2" width="8" height="4" rx="1" ry="1"></rect></svg>
+            </div>
+            <h3>Certificado obligatorio</h3>
+            <p>La empresa debe emitir un certificado que acredite el cumplimiento de los requisitos legales.</p>
+          </div>
+          <div class="info-card" data-aos="fade-up" data-aos-delay="250">
+            <div class="info-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+            </div>
+            <h3>Límites aplicables</h3>
+            <p>Base máxima de deducción: 100.000€ anuales. La deducción no puede exceder el 50% de la cuota íntegra estatal.</p>
+          </div>
+        </div>
+        
+        <div class="legal-reference" data-aos="fade-up">
+          <h3>Marco legal</h3>
+          <p>La deducción por inversión en empresas de nueva o reciente creación está regulada en el artículo 68.1 de la Ley 35/2006, de 28 de noviembre, del Impuesto sobre la Renta de las Personas Físicas, y en los artículos 69 y 70 del Real Decreto 439/2007, de 30 de marzo, por el que se aprueba el Reglamento del IRPF.</p>
+          <div class="legal-buttons">
+            <a href="https://www.boe.es/buscar/act.php?id=BOE-A-2006-20764&p=20210428&tn=1#a68" target="_blank" class="legal-button">Ver Ley 35/2006</a>
+            <a href="https://www.boe.es/buscar/act.php?id=BOE-A-2007-6820&p=20210130&tn=1#a69" target="_blank" class="legal-button">Ver Reglamento</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="requisitos-empresa" class="section-alt" data-aos="fade-up">
+      <div class="container">
+        <h2 class="section-title">Requisitos para la empresa</h2>
+        <p class="section-text">Para que los inversores puedan aplicar la deducción, la empresa debe cumplir los siguientes requisitos:</p>
+        
+        <div class="requirements-grid">
+          <div class="requirement-card" data-aos="fade-up" data-aos-delay="100">
+            <div class="requirement-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7.01" y2="7"></line></svg>
+            </div>
+            <h3>Forma jurídica</h3>
+            <p>Sociedad Anónima, Sociedad de Responsabilidad Limitada, Sociedad Anónima Laboral o Sociedad de Responsabilidad Limitada Laboral.</p>
+          </div>
+          <div class="requirement-card" data-aos="fade-up" data-aos-delay="150">
+            <div class="requirement-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+            </div>
+            <h3>Antigüedad</h3>
+            <p>No debe haber estado cotizando en ningún mercado organizado y no debe haber transcurrido más de 7 años desde su primer registro comercial.</p>
+          </div>
+          <div class="requirement-card" data-aos="fade-up" data-aos-delay="200">
+            <div class="requirement-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+            </div>
+            <h3>Plantilla media</h3>
+            <p>Debe contar con una plantilla media anual inferior a 50 empleados.</p>
+          </div>
+          <div class="requirement-card" data-aos="fade-up" data-aos-delay="250">
+            <div class="requirement-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
+            </div>
+            <h3>Volumen de negocio</h3>
+            <p>El importe neto de la cifra de negocios no debe superar los 10 millones de euros.</p>
+          </div>
+          <div class="requirement-card" data-aos="fade-up" data-aos-delay="300">
+            <div class="requirement-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg>
+            </div>
+            <h3>Actividad económica</h3>
+            <p>Debe desarrollar una actividad económica que cuente con los medios personales y materiales para el desarrollo de la misma.</p>
+          </div>
+          <div class="requirement-card" data-aos="fade-up" data-aos-delay="350">
+            <div class="requirement-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+            </div>
+            <h3>No gestión de patrimonio</h3>
+            <p>No debe tener como actividad principal la gestión de un patrimonio mobiliario o inmobiliario.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="generador-certificados" class="section-white" data-aos="fade-up">
+      <div class="container">
+        <h2 class="section-title">Generador de Certificados</h2>
+        <p class="section-text">Complete el siguiente formulario para generar un certificado fiscal válido para la deducción por inversión en empresas de nueva o reciente creación.</p>
+        
+        <div class="certificate-wizard" data-aos="fade-up">
+          <div class="wizard-progress">
+            <div class="progress-step active" data-step="1">
+              <div class="step-number">1</div>
+              <div class="step-label">Datos de la empresa</div>
+            </div>
+            <div class="progress-step" data-step="2">
+              <div class="step-number">2</div>
+              <div class="step-label">Datos del inversor</div>
+            </div>
+            <div class="progress-step" data-step="3">
+              <div class="step-number">3</div>
+              <div class="step-label">Datos de la inversión</div>
+            </div>
+            <div class="progress-step" data-step="4">
+              <div class="step-number">4</div>
+              <div class="step-label">Verificación</div>
+            </div>
+            <div class="progress-step" data-step="5">
+              <div class="step-number">5</div>
+              <div class="step-label">Generación</div>
+            </div>
+          </div>
+          
+          <div class="wizard-content">
+            <!-- Paso 1: Datos de la empresa -->
+            <div class="wizard-step active" id="step-1">
+              <h3>Datos de la empresa</h3>
+              <div class="form-group">
+                <label for="empresa-nombre">Denominación social:</label>
+                <input type="text" id="empresa-nombre" name="empresa-nombre" required>
+              </div>
+              <div class="form-group">
+                <label for="empresa-cif">CIF:</label>
+                <input type="text" id="empresa-cif" name="empresa-cif" required pattern="[A-Z0-9]{9}" title="Formato de CIF válido (ej: B12345678)">
+              </div>
+              <div class="form-group">
+                <label for="empresa-domicilio">Domicilio social:</label>
+                <input type="text" id="empresa-domicilio" name="empresa-domicilio" required>
+              </div>
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="empresa-localidad">Localidad:</label>
+                  <input type="text" id="empresa-localidad" name="empresa-localidad" required>
+                </div>
+                <div class="form-group">
+                  <label for="empresa-provincia">Provincia:</label>
+                  <input type="text" id="empresa-provincia" name="empresa-provincia" required>
+                </div>
+                <div class="form-group">
+                  <label for="empresa-cp">Código Postal:</label>
+                  <input type="text" id="empresa-cp" name="empresa-cp" required pattern="[0-9]{5}" title="Código postal de 5 dígitos">
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="empresa-constitucion">Fecha de constitución:</label>
+                <input type="date" id="empresa-constitucion" name="empresa-constitucion" required>
+              </div>
+              <div class="form-group">
+                <label for="empresa-registro">Datos de inscripción en el Registro Mercantil:</label>
+                <input type="text" id="empresa-registro" name="empresa-registro" required placeholder="Ej: Tomo XXX, Folio XXX, Hoja XXX">
+              </div>
+              <div class="form-group">
+                <label for="empresa-actividad">Actividad principal (CNAE):</label>
+                <input type="text" id="empresa-actividad" name="empresa-actividad" required>
+              </div>
+              <div class="form-group">
+                <label for="empresa-representante">Nombre del representante legal:</label>
+                <input type="text" id="empresa-representante" name="empresa-representante" required>
+              </div>
+              <div class="form-group">
+                <label for="empresa-cargo">Cargo del representante:</label>
+                <input type="text" id="empresa-cargo" name="empresa-cargo" required>
+              </div>
+              
+              <div class="wizard-buttons">
+                <button type="button" class="next-button" onclick="nextStep(1)">Siguiente</button>
+              </div>
+            </div>
+            
+            <!-- Paso 2: Datos del inversor -->
+            <div class="wizard-step" id="step-2">
+              <h3>Datos del inversor</h3>
+              <div class="form-group">
+                <label for="inversor-nombre">Nombre completo:</label>
+                <input type="text" id="inversor-nombre" name="inversor-nombre" required>
+              </div>
+              <div class="form-group">
+                <label for="inversor-nif">NIF:</label>
+                <input type="text" id="inversor-nif" name="inversor-nif" required pattern="[0-9]{8}[A-Z]" title="Formato de NIF válido (ej: 12345678Z)">
+              </div>
+              <div class="form-group">
+                <label for="inversor-domicilio">Domicilio fiscal:</label>
+                <input type="text" id="inversor-domicilio" name="inversor-domicilio" required>
+              </div>
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="inversor-localidad">Localidad:</label>
+                  <input type="text" id="inversor-localidad" name="inversor-localidad" required>
+                </div>
+                <div class="form-group">
+                  <label for="inversor-provincia">Provincia:</label>
+                  <input type="text" id="inversor-provincia" name="inversor-provincia" required>
+                </div>
+                <div class="form-group">
+                  <label for="inversor-cp">Código Postal:</label>
+                  <input type="text" id="inversor-cp" name="inversor-cp" required pattern="[0-9]{5}" title="Código postal de 5 dígitos">
+                </div>
+              </div>
+              
+              <div class="wizard-buttons">
+                <button type="button" class="prev-button" onclick="prevStep(2)">Anterior</button>
+                <button type="button" class="next-button" onclick="nextStep(2)">Siguiente</button>
+              </div>
+            </div>
+            
+            <!-- Paso 3: Datos de la inversión -->
+            <div class="wizard-step" id="step-3">
+              <h3>Datos de la inversión</h3>
+              <div class="form-group">
+                <label for="inversion-fecha">Fecha de la inversión:</label>
+                <input type="date" id="inversion-fecha" name="inversion-fecha" required>
+              </div>
+              <div class="form-group">
+                <label for="inversion-importe">Importe de la inversión (€):</label>
+                <input type="number" id="inversion-importe" name="inversion-importe" required min="1" step="0.01">
+              </div>
+              <div class="form-group">
+                <label for="inversion-tipo">Tipo de inversión:</label>
+                <select id="inversion-tipo" name="inversion-tipo" required>
+                  <option value="">Seleccione una opción</option>
+                  <option value="capital">Constitución de sociedad / Ampliación de capital</option>
+                  <option value="prima">Prima de emisión</option>
+                  <option value="participaciones">Adquisición de participaciones</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="inversion-participacion">Porcentaje de participación tras la inversión (%):</label>
+                <input type="number" id="inversion-participacion" name="inversion-participacion" required min="0" max="100" step="0.01">
+              </div>
+              <div class="form-group">
+                <label for="inversion-permanencia">Compromiso de permanencia (años):</label>
+                <select id="inversion-permanencia" name="inversion-permanencia" required>
+                  <option value="3">3 años (mínimo legal)</option>
+                  <option value="4">4 años</option>
+                  <option value="5">5 años</option>
+                  <option value="6">6 años</option>
+                  <option value="7">7 años</option>
+                  <option value="8">8 años</option>
+                  <option value="9">9 años</option>
+                  <option value="10">10 años</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="inversion-recompra">¿Incluir cláusula de recompra pactada?</label>
+                <select id="inversion-recompra" name="inversion-recompra" required>
+                  <option value="si">Sí, tras el período mínimo legal</option>
+                  <option value="no">No</option>
+                </select>
+              </div>
+              
+              <div class="wizard-buttons">
+                <button type="button" class="prev-button" onclick="prevStep(3)">Anterior</button>
+                <button type="button" class="next-button" onclick="nextStep(3)">Siguiente</button>
+              </div>
+            </div>
+            
+            <!-- Paso 4: Verificación -->
+            <div class="wizard-step" id="step-4">
+              <h3>Verificación de requisitos legales</h3>
+              <div class="verification-section">
+                <p class="verification-intro">Para que el certificado sea válido, la empresa debe cumplir los siguientes requisitos. Por favor, confirme cada uno de ellos:</p>
+                
+                <div class="verification-item">
+                  <input type="checkbox" id="req-forma" name="req-forma" required>
+                  <label for="req-forma">La empresa tiene forma jurídica de SA, SL, SAL o SLL.</label>
+                </div>
+                <div class="verification-item">
+                  <input type="checkbox" id="req-antiguedad" name="req-antiguedad" required>
+                  <label for="req-antiguedad">No han transcurrido más de 7 años desde el primer registro comercial de la empresa.</label>
+                </div>
+                <div class="verification-item">
+                  <input type="checkbox" id="req-cotizacion" name="req-cotizacion" required>
+                  <label for="req-cotizacion">La empresa no cotiza en ningún mercado organizado.</label>
+                </div>
+                <div class="verification-item">
+                  <input type="checkbox" id="req-plantilla" name="req-plantilla" required>
+                  <label for="req-plantilla">La plantilla media anual de la empresa es inferior a 50 empleados.</label>
+                </div>
+                <div class="verification-item">
+                  <input type="checkbox" id="req-volumen" name="req-volumen" required>
+                  <label for="req-volumen">El importe neto de la cifra de negocios no supera los 10 millones de euros.</label>
+                </div>
+                <div class="verification-item">
+                  <input type="checkbox" id="req-actividad" name="req-actividad" required>
+                  <label for="req-actividad">La empresa desarrolla una actividad económica con medios personales y materiales propios.</label>
+                </div>
+                <div class="verification-item">
+                  <input type="checkbox" id="req-patrimonio" name="req-patrimonio" required>
+                  <label for="req-patrimonio">La actividad principal de la empresa NO es la gestión de un patrimonio mobiliario o inmobiliario.</label>
+                </div>
+                <div class="verification-item">
+                  <input type="checkbox" id="req-vinculacion" name="req-vinculacion" required>
+                  <label for="req-vinculacion">El inversor no tiene una vinculación laboral o de parentesco con la empresa (salvo que sea socio-trabajador).</label>
+                </div>
+                <div class="verification-item">
+                  <input type="checkbox" id="req-participacion" name="req-participacion" required>
+                  <label for="req-participacion">La participación del inversor, junto con su cónyuge y parientes hasta 2º grado, no supera el 40% del capital social.</label>
+                </div>
+                <div class="verification-item">
+                  <input type="checkbox" id="req-certificado" name="req-certificado" required>
+                  <label for="req-certificado">Confirmo que todos los datos proporcionados son veraces y que la empresa cumple con los requisitos legales para la aplicación de la deducción.</label>
+                </div>
+              </div>
+              
+              <div class="wizard-buttons">
+                <button type="button" class="prev-button" onclick="prevStep(4)">Anterior</button>
+                <button type="button" class="next-button" onclick="nextStep(4)">Siguiente</button>
+              </div>
+            </div>
+            
+            <!-- Paso 5: Generación -->
+            <div class="wizard-step" id="step-5">
+              <h3>Generación del certificado</h3>
+              <div class="generation-section">
+                <p>Revise los datos introducidos antes de generar el certificado:</p>
+                
+                <div class="summary-section">
+                  <h4>Datos de la empresa</h4>
+                  <div id="resumen-empresa" class="summary-content"></div>
+                </div>
+                
+                <div class="summary-section">
+                  <h4>Datos del inversor</h4>
+                  <div id="resumen-inversor" class="summary-content"></div>
+                </div>
+                
+                <div class="summary-section">
+                  <h4>Datos de la inversión</h4>
+                  <div id="resumen-inversion" class="summary-content"></div>
+                </div>
+                
+                <div class="generation-options">
+                  <h4>Opciones de generación</h4>
+                  <div class="form-group">
+                    <label for="certificado-fecha">Fecha de emisión del certificado:</label>
+                    <input type="date" id="certificado-fecha" name="certificado-fecha" required>
+                  </div>
+                  <div class="form-group">
+                    <label for="certificado-formato">Formato de salida:</label>
+                    <select id="certificado-formato" name="certificado-formato" required>
+                      <option value="pdf">PDF</option>
+                      <option value="pdf-editable">PDF Editable</option>
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label for="certificado-firma">Método de firma:</label>
+                    <select id="certificado-firma" name="certificado-firma" required>
+                      <option value="manual">Firma manual (imprimir y firmar)</option>
+                      <option value="digital">Preparar para firma digital</option>
+                    </select>
+                  </div>
+                </div>
+                
+                <div class="legal-disclaimer">
+                  <p><strong>Aviso legal:</strong> Este certificado se emite bajo la responsabilidad de la empresa, que declara cumplir todos los requisitos establecidos en el artículo 68.1 de la Ley del IRPF y su desarrollo reglamentario. La falsedad en los datos o el incumplimiento de los requisitos puede dar lugar a sanciones fiscales y a la pérdida del derecho a la deducción por parte del inversor.</p>
+                </div>
+              </div>
+              
+              <div class="wizard-buttons">
+                <button type="button" class="prev-button" onclick="prevStep(5)">Anterior</button>
+                <button type="button" class="generate-button" onclick="generarCertificado()">Generar certificado</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="preguntas-frecuentes" class="section-light" data-aos="fade-up">
+      <div class="container">
+        <h2 class="section-title">Preguntas frecuentes</h2>
+        
+        <div class="faq-container">
+          <div class="faq-item" data-aos="fade-up" data-aos-delay="100">
+            <div class="faq-question" onclick="toggleFaq(this)">
+              <h3>¿Qué validez legal tiene el certificado generado?</h3>
+              <span class="faq-icon">+</span>
+            </div>
+            <div class="faq-answer">
+              <p>El certificado generado cumple con todos los requisitos formales establecidos en la normativa fiscal vigente. Para que tenga plena validez legal, debe ser firmado por el representante legal de la empresa y debe reflejar información veraz sobre el cumplimiento de los requisitos legales.</p>
+            </div>
+          </div>
+          
+          <div class="faq-item" data-aos="fade-up" data-aos-delay="150">
+            <div class="faq-question" onclick="toggleFaq(this)">
+              <h3>¿Cuándo debe emitirse el certificado?</h3>
+              <span class="faq-icon">+</span>
+            </div>
+            <div class="faq-answer">
+              <p>El certificado debe emitirse dentro del plazo establecido para la presentación de la declaración del IRPF correspondiente al período impositivo en que se produjo la inversión. Es recomendable emitirlo lo antes posible tras la formalización de la inversión.</p>
+            </div>
+          </div>
+          
+          <div class="faq-item" data-aos="fade-up" data-aos-delay="200">
+            <div class="faq-question" onclick="toggleFaq(this)">
+              <h3>¿Qué ocurre si la empresa deja de cumplir los requisitos?</h3>
+              <span class="faq-icon">+</span>
+            </div>
+            <div class="faq-answer">
+              <p>Si la empresa deja de cumplir los requisitos durante el período de permanencia mínima de la inversión (3 años), el inversor perderá el derecho a la deducción y deberá incluir en la declaración del IRPF del ejercicio en que se produzca el incumplimiento la parte del impuesto que se dejó de pagar como consecuencia de la deducción practicada, junto con los intereses de demora correspondientes.</p>
+            </div>
+          </div>
+          
+          <div class="faq-item" data-aos="fade-up" data-aos-delay="250">
+            <div class="faq-question" onclick="toggleFaq(this)">
+              <h3>¿Es compatible esta deducción con otras deducciones fiscales?</h3>
+              <span class="faq-icon">+</span>
+            </div>
+            <div class="faq-answer">
+              <p>Sí, esta deducción es compatible con otras deducciones fiscales, tanto estatales como autonómicas, siempre que se cumplan los requisitos específicos de cada una de ellas. No obstante, debe tenerse en cuenta que algunas Comunidades Autónomas tienen deducciones propias por inversión en empresas de nueva o reciente creación que pueden ser incompatibles con la deducción estatal para las mismas cantidades invertidas.</p>
+            </div>
+          </div>
+          
+          <div class="faq-item" data-aos="fade-up" data-aos-delay="300">
+            <div class="faq-question" onclick="toggleFaq(this)">
+              <h3>¿Qué documentación adicional debe conservar el inversor?</h3>
+              <span class="faq-icon">+</span>
+            </div>
+            <div class="faq-answer">
+              <p>Además del certificado, el inversor debe conservar la siguiente documentación:</p>
+              <ul>
+                <li>Escritura de constitución o ampliación de capital en la que conste su participación</li>
+                <li>Contrato de compraventa de participaciones o acciones</li>
+                <li>Justificantes bancarios de la inversión realizada</li>
+                <li>Cualquier otra documentación que acredite la realidad y cuantía de la inversión</li>
+              </ul>
+              <p>Esta documentación debe conservarse durante el plazo de prescripción fiscal (actualmente 4 años desde la finalización del plazo de presentación de la declaración).</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-logo">
+          <img src="./logo_contucuota.png" alt="Logo ConTuCuota" width="60" height="60">
+          <h3>ConTuCuota</h3>
+          <p>Transformamos impuestos en oportunidades de inversión</p>
+        </div>
+        <div class="footer-links">
+          <h4>Enlaces rápidos</h4>
+          <ul>
+            <li><a href="index.html">Inicio</a></li>
+            <li><a href="index.html#como-funciona">Cómo funciona</a></li>
+            <li><a href="simulador.html">Simulador</a></li>
+            <li><a href="plataforma.html">Plataforma</a></li>
+            <li><a href="certificados.html">Certificados</a></li>
+          </ul>
+        </div>
+        <div class="footer-legal">
+          <h4>Legal</h4>
+          <ul>
+            <li><a href="#">Aviso legal</a></li>
+            <li><a href="#">Política de privacidad</a></li>
+            <li><a href="#">Política de cookies</a></li>
+            <li><a href="#">Términos y condiciones</a></li>
+          </ul>
+        </div>
+        <div class="footer-contact">
+          <h4>Contacto</h4>
+          <p>Email: info@contucuota.es</p>
+          <p>Teléfono: +34 900 000 000</p>
+          <div class="social-links">
+            <a href="#" aria-label="LinkedIn"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg></a>
+            <a href="#" aria-label="Twitter"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path></svg></a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2025 ConTuCuota. Todos los derechos reservados.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Inicializar AOS
+    document.addEventListener('DOMContentLoaded', function() {
+      AOS.init({
+        duration: 800,
+        easing: 'ease-in-out',
+        once: true
+      });
+    });
+  </script>
+</body>
+</html>

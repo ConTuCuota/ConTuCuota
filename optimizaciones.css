@@ -1,0 +1,230 @@
+/* Estilos adicionales para mejorar alineación y centrado */
+
+/* Mejoras generales de alineación */
+.text-center {
+  text-align: center;
+}
+
+.text-left {
+  text-align: left;
+}
+
+.text-right {
+  text-align: right;
+}
+
+/* Mejoras para formularios */
+.form-container {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 2rem;
+  background-color: var(--white);
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow-soft);
+}
+
+.form-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.form-row .form-group {
+  flex: 1;
+  min-width: 200px;
+}
+
+/* Mejoras para la calculadora */
+.calculator-form {
+  max-width: 500px;
+  margin: 0 auto 2rem;
+}
+
+.resultado {
+  max-width: 600px;
+  margin: 2rem auto;
+  padding: 1.5rem;
+  background-color: var(--primary-light);
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow-soft);
+}
+
+.resultado-detalle {
+  padding: 1.5rem;
+  background-color: var(--white);
+  border-radius: var(--border-radius-small);
+  margin: 1rem 0;
+  border-left: 4px solid var(--primary-color);
+}
+
+/* Mejoras para la sección de herramientas */
+.tools-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 2rem auto;
+}
+
+/* Mejoras para la sección de sectores */
+.sectors-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 2rem auto;
+}
+
+/* Mejoras para la sección de pasos */
+.process-steps {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Mejoras para la sección de contacto */
+.contact-form {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* Mejoras para la sección de certificados */
+.certificate-wizard {
+  max-width: 800px;
+  margin: 0 auto;
+  background-color: var(--white);
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow-soft);
+  padding: 2rem;
+}
+
+.wizard-progress {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 2rem;
+  overflow-x: auto;
+  padding-bottom: 1rem;
+}
+
+.progress-step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 100px;
+}
+
+.step-number {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: var(--background-alt);
+  color: var(--text-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+}
+
+.progress-step.active .step-number,
+.progress-step.completed .step-number {
+  background-color: var(--primary-color);
+  color: white;
+}
+
+.step-label {
+  font-size: var(--font-size-sm);
+  color: var(--text-light);
+  text-align: center;
+}
+
+.progress-step.active .step-label {
+  color: var(--primary-color);
+  font-weight: bold;
+}
+
+/* Mejoras para los resultados de la calculadora */
+.resultado h3 {
+  text-align: center;
+  color: var(--primary-dark);
+  margin-bottom: 1rem;
+}
+
+.resultado p {
+  margin-bottom: 0.5rem;
+}
+
+.resultado-nota {
+  text-align: center;
+  font-size: var(--font-size-sm);
+  margin-top: 1rem;
+  color: var(--text-light);
+}
+
+/* Mejoras para dispositivos móviles */
+@media (max-width: 768px) {
+  .form-row {
+    flex-direction: column;
+  }
+  
+  .certificate-wizard {
+    padding: 1rem;
+  }
+  
+  .wizard-progress {
+    padding-bottom: 0.5rem;
+  }
+  
+  .progress-step {
+    min-width: 80px;
+  }
+  
+  .step-number {
+    width: 30px;
+    height: 30px;
+    font-size: var(--font-size-sm);
+  }
+  
+  .step-label {
+    font-size: var(--font-size-xs);
+  }
+}
+
+/* Mejoras para centrado vertical */
+.flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.flex-column {
+  flex-direction: column;
+}
+
+/* Mejoras para espaciado */
+.mt-1 { margin-top: 0.5rem; }
+.mt-2 { margin-top: 1rem; }
+.mt-3 { margin-top: 1.5rem; }
+.mt-4 { margin-top: 2rem; }
+.mt-5 { margin-top: 3rem; }
+
+.mb-1 { margin-bottom: 0.5rem; }
+.mb-2 { margin-bottom: 1rem; }
+.mb-3 { margin-bottom: 1.5rem; }
+.mb-4 { margin-bottom: 2rem; }
+.mb-5 { margin-bottom: 3rem; }
+
+.mx-auto { 
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Mejoras para la visualización de resultados */
+.resultado {
+  display: block; /* Cambiado de none a block para que siempre sea visible cuando se genere */
+  animation: fadeIn 0.5s ease;
+}

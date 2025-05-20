@@ -1,0 +1,181 @@
+/* Optimizaciones de rendimiento y responsive */
+
+/* Optimización de imágenes */
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Mejoras de rendimiento para dispositivos móviles */
+@media (max-width: 768px) {
+  /* Reducir animaciones en móvil para mejorar rendimiento */
+  .zoom-on-hover:hover {
+    transform: none;
+  }
+  
+  /* Ajustes de espaciado para móvil */
+  .section-padding {
+    padding: 3rem 1rem;
+  }
+  
+  .section-title {
+    margin-bottom: 1.5rem;
+  }
+  
+  /* Mejoras para formularios en móvil */
+  input, select, textarea {
+    font-size: 16px; /* Evita zoom automático en iOS */
+  }
+  
+  /* Ajustes para el menú en móvil */
+  .header {
+    padding: 0.75rem 1rem;
+  }
+}
+
+/* Optimizaciones para tablets */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .section-padding {
+    padding: 3.5rem 2rem;
+  }
+  
+  .sectors-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Mejoras de accesibilidad */
+:focus {
+  outline: 2px solid #4CAF50;
+  outline-offset: 2px;
+}
+
+.skip-link:focus {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+/* Optimizaciones de carga */
+.lazy-load {
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.lazy-load.loaded {
+  opacity: 1;
+}
+
+/* Mejoras para pantallas de alta densidad */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  .hero {
+    background-image: url('hero-background-2x.jpg');
+  }
+}
+
+/* Mejoras para modo oscuro */
+@media (prefers-color-scheme: dark) {
+  .section-white, .section-light {
+    background-color: #1a1a1a;
+    color: #f0f0f0;
+  }
+  
+  .section-highlight {
+    background-color: #2a2a2a;
+  }
+  
+  .tool-card, .metric-card, .feature-card {
+    background-color: #2a2a2a;
+    color: #f0f0f0;
+  }
+  
+  .tool-card h3, .metric-card h4, .feature-card h3 {
+    color: #f0f0f0;
+  }
+  
+  .tool-card p, .metric-card small, .feature-card p {
+    color: #cccccc;
+  }
+  
+  input, select, textarea {
+    background-color: #333;
+    color: #f0f0f0;
+    border-color: #555;
+  }
+  
+  .form-hint {
+    color: #aaa;
+  }
+}
+
+/* Optimizaciones para impresión */
+@media print {
+  .header, .footer, .cta-button, .secondary-button {
+    display: none;
+  }
+  
+  body {
+    font-size: 12pt;
+    line-height: 1.5;
+    color: #000;
+    background: #fff;
+  }
+  
+  a {
+    text-decoration: none;
+    color: #000;
+  }
+  
+  .section-title {
+    page-break-after: avoid;
+  }
+  
+  p, h2, h3, h4 {
+    orphans: 3;
+    widows: 3;
+  }
+  
+  h2, h3, h4 {
+    page-break-after: avoid;
+  }
+}
+
+/* Mejoras de rendimiento para animaciones */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  
+  .zoom-on-hover:hover {
+    transform: none;
+  }
+}
+
+/* Optimizaciones para dispositivos táctiles */
+@media (hover: none) {
+  .tool-link::after {
+    transform: scaleX(1);
+    opacity: 0.5;
+  }
+  
+  .tool-card:active {
+    transform: scale(0.98);
+  }
+}
+
+/* Mejoras para pantallas grandes */
+@media (min-width: 1440px) {
+  .container {
+    max-width: 1320px;
+  }
+  
+  .section-title {
+    font-size: 2.5rem;
+  }
+  
+  .section-text {
+    font-size: 1.125rem;
+  }
+}

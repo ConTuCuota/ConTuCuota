@@ -1,0 +1,141 @@
+/* Estilos adicionales para mejorar la visualización y corregir desajustes */
+
+/* Correcciones para el logo en el header */
+.header .logo {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--primary-color);
+}
+
+.header .logo a {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  color: inherit;
+  text-decoration: none;
+}
+
+.header .logo img {
+  width: 60px;
+  height: 60px;
+  object-fit: contain;
+  transition: var(--transition-standard);
+}
+
+/* Correcciones para los botones en el hero */
+.hero-content {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+  padding: var(--spacing-xl);
+  background-color: rgba(255, 255, 255, 0.95);
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow-medium);
+}
+
+.hero-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 2rem;
+  flex-wrap: wrap;
+}
+
+.hero-buttons .cta-button {
+  min-width: 180px;
+  text-align: center;
+}
+
+/* Correcciones específicas para la plataforma */
+.plataforma-hero .hero-content {
+  max-width: 900px;
+}
+
+/* Asegurar que los botones CTA tengan estilos consistentes */
+.cta-button {
+  display: inline-block;
+  padding: 0.8rem 1.8rem;
+  background-color: var(--primary-color);
+  color: white;
+  font-weight: 600;
+  border-radius: var(--border-radius);
+  transition: var(--transition-standard);
+  border: none;
+  cursor: pointer;
+  font-size: 1rem;
+  text-align: center;
+  text-decoration: none;
+  box-shadow: var(--shadow-soft);
+}
+
+.cta-button:hover {
+  background-color: var(--primary-dark);
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-medium);
+}
+
+.cta-button.secondary {
+  background-color: var(--secondary-color);
+}
+
+.cta-button.secondary:hover {
+  background-color: var(--secondary-dark);
+}
+
+/* Correcciones para dispositivos móviles */
+@media (max-width: 768px) {
+  .hero-buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .hero-buttons .cta-button {
+    width: 100%;
+    max-width: 300px;
+  }
+  
+  .header .logo {
+    font-size: 1.2rem;
+  }
+  
+  .header .logo img {
+    width: 40px;
+    height: 40px;
+  }
+}
+
+/* Asegurar que los enlaces de navegación sean consistentes */
+nav {
+  display: flex;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+nav a {
+  color: var(--text-color);
+  font-weight: 600;
+  position: relative;
+  padding: 0.5rem 0;
+  text-decoration: none;
+}
+
+/* Correcciones para el footer */
+.footer-logo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.footer-logo img {
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+}
