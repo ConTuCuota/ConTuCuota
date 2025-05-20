@@ -320,13 +320,13 @@ function generateSummary() {
   const resumenEmpresa = document.getElementById('resumen-empresa');
   if (resumenEmpresa) {
     resumenEmpresa.innerHTML = `
-      <p><strong>Denominación social:</strong> ${window.certificadoData.empresa.nombre}</p>
-      <p><strong>CIF:</strong> ${window.certificadoData.empresa.cif}</p>
-      <p><strong>Domicilio:</strong> ${window.certificadoData.empresa.domicilio}, ${window.certificadoData.empresa.localidad}, ${window.certificadoData.empresa.provincia} (${window.certificadoData.empresa.cp})</p>
-      <p><strong>Fecha de constitución:</strong> ${formatDate(window.certificadoData.empresa.constitucion)}</p>
-      <p><strong>Registro Mercantil:</strong> ${window.certificadoData.empresa.registro}</p>
-      <p><strong>Actividad principal:</strong> ${window.certificadoData.empresa.actividad}</p>
-      <p><strong>Representante legal:</strong> ${window.certificadoData.empresa.representante} (${window.certificadoData.empresa.cargo})</p>
+      <p><strong>Denominación social:</strong> ${escapeHtml(window.certificadoData.empresa.nombre)}</p>
+      <p><strong>CIF:</strong> ${escapeHtml(window.certificadoData.empresa.cif)}</p>
+      <p><strong>Domicilio:</strong> ${escapeHtml(window.certificadoData.empresa.domicilio)}, ${escapeHtml(window.certificadoData.empresa.localidad)}, ${escapeHtml(window.certificadoData.empresa.provincia)} (${escapeHtml(window.certificadoData.empresa.cp)})</p>
+      <p><strong>Fecha de constitución:</strong> ${escapeHtml(formatDate(window.certificadoData.empresa.constitucion))}</p>
+      <p><strong>Registro Mercantil:</strong> ${escapeHtml(window.certificadoData.empresa.registro)}</p>
+      <p><strong>Actividad principal:</strong> ${escapeHtml(window.certificadoData.empresa.actividad)}</p>
+      <p><strong>Representante legal:</strong> ${escapeHtml(window.certificadoData.empresa.representante)} (${escapeHtml(window.certificadoData.empresa.cargo)})</p>
     `;
   }
   
@@ -334,9 +334,9 @@ function generateSummary() {
   const resumenInversor = document.getElementById('resumen-inversor');
   if (resumenInversor) {
     resumenInversor.innerHTML = `
-      <p><strong>Nombre completo:</strong> ${window.certificadoData.inversor.nombre}</p>
-      <p><strong>NIF:</strong> ${window.certificadoData.inversor.nif}</p>
-      <p><strong>Domicilio fiscal:</strong> ${window.certificadoData.inversor.domicilio}, ${window.certificadoData.inversor.localidad}, ${window.certificadoData.inversor.provincia} (${window.certificadoData.inversor.cp})</p>
+      <p><strong>Nombre completo:</strong> ${escapeHtml(window.certificadoData.inversor.nombre)}</p>
+      <p><strong>NIF:</strong> ${escapeHtml(window.certificadoData.inversor.nif)}</p>
+      <p><strong>Domicilio fiscal:</strong> ${escapeHtml(window.certificadoData.inversor.domicilio)}, ${escapeHtml(window.certificadoData.inversor.localidad)}, ${escapeHtml(window.certificadoData.inversor.provincia)} (${escapeHtml(window.certificadoData.inversor.cp)})</p>
     `;
   }
   
@@ -357,12 +357,12 @@ function generateSummary() {
     let recompraTexto = window.certificadoData.inversion.recompra === 'si' ? 'Sí, tras el período mínimo legal' : 'No';
     
     resumenInversion.innerHTML = `
-      <p><strong>Fecha de la inversión:</strong> ${formatDate(window.certificadoData.inversion.fecha)}</p>
-      <p><strong>Importe:</strong> ${formatCurrency(window.certificadoData.inversion.importe)}</p>
-      <p><strong>Tipo de inversión:</strong> ${tipoInversionTexto}</p>
-      <p><strong>Porcentaje de participación:</strong> ${window.certificadoData.inversion.participacion}%</p>
-      <p><strong>Compromiso de permanencia:</strong> ${window.certificadoData.inversion.permanencia} años</p>
-      <p><strong>Cláusula de recompra:</strong> ${recompraTexto}</p>
+      <p><strong>Fecha de la inversión:</strong> ${escapeHtml(formatDate(window.certificadoData.inversion.fecha))}</p>
+      <p><strong>Importe:</strong> ${escapeHtml(formatCurrency(window.certificadoData.inversion.importe))}</p>
+      <p><strong>Tipo de inversión:</strong> ${escapeHtml(tipoInversionTexto)}</p>
+      <p><strong>Porcentaje de participación:</strong> ${escapeHtml(window.certificadoData.inversion.participacion)}%</p>
+      <p><strong>Compromiso de permanencia:</strong> ${escapeHtml(window.certificadoData.inversion.permanencia)} años</p>
+      <p><strong>Cláusula de recompra:</strong> ${escapeHtml(recompraTexto)}</p>
     `;
   }
 }
@@ -401,11 +401,24 @@ function formatDate(dateString) {
 // Función auxiliar para formatear moneda
 function formatCurrency(amount) {
   if (!amount) return '0,00 €';
-  
+
   return new Intl.NumberFormat('es-ES', {
     style: 'currency',
     currency: 'EUR'
   }).format(amount);
+}
+
+// Escapa caracteres especiales para evitar inyección de HTML
+function escapeHtml(text) {
+  if (typeof text !== 'string') return text;
+  const map = {
+    '&': '&amp;',
+    '<': '&lt;',
+    '>': '&gt;',
+    '"': '&quot;',
+    "'": '&#39;'
+  };
+  return text.replace(/[&<>"']/g, m => map[m]);
 }
 
 // Función para hacer scroll al inicio del formulario
