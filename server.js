@@ -37,6 +37,10 @@ app.post('/api/certificado', (req, res) => {
 });
 
 const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
-  console.log(`Certificado service listening on port ${PORT}`);
-});
+if (require.main === module) {
+  app.listen(PORT, () => {
+    console.log(`Certificado service listening on port ${PORT}`);
+  });
+}
+
+module.exports = app;
