@@ -1,4 +1,4 @@
-const { calcularFlujosPrincipales, calcularTIR } = require('../simulador');
+import { calcularFlujosPrincipales, calcularTIR } from '../src/simulador-core.js';
 
 describe('calcularFlujosPrincipales', () => {
   test('generates expected flows for basic scenario', () => {
