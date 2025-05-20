@@ -5,7 +5,8 @@
  * considerando:
  * - Aportaciones anuales desde el año 1 al año 5 (configurable)
  * - Deducción fiscal del 50% al año siguiente de cada aportación
- * - Recuperación del 50% del capital aportado a partir del final del año 4
+ * - Recuperación del 50% del capital aportado tres años después de cada
+ *   inversión (por defecto desde el año 4)
  * - Módulo específico para simular diferentes escenarios para el capital remanente
  */
 
@@ -35,7 +36,7 @@ function simularInversionBasica() {
   const parametrosBase = {
     tasaDeduccion: 0.5,                // 50% de deducción fiscal
     tasaRecuperacionCapital: 0.5,      // 50% de recuperación del capital
-    inicioRecuperacion: 4,             // Año de inicio de recuperación (año 4)
+    inicioRecuperacion: 3,             // Recuperación a partir del 4º año
     tasaDescuento: 0.03,               // Tasa de descuento para VAN (3%)
     inflacionAnual: 0.02               // Inflación anual estimada (2%)
   };
@@ -79,7 +80,8 @@ function calcularFlujosPrincipales(ticketAnual, aniosInversion, parametros) {
     }
   }
   
-  // 3. Calcular recuperaciones de capital (50% del capital aportado, a partir del año 4)
+  // 3. Calcular recuperaciones de capital (50% del capital aportado, tres años
+  //    después de cada inversión)
   for (let i = 0; i < aniosInversion; i++) {
     const anioRecuperacion = i + parametros.inicioRecuperacion;
     if (anioRecuperacion < 10) {

@@ -5,7 +5,7 @@ describe('calcularFlujosPrincipales', () => {
     const params = {
       tasaDeduccion: 0.5,
       tasaRecuperacionCapital: 0.5,
-      inicioRecuperacion: 4
+      inicioRecuperacion: 3
     };
     const result = calcularFlujosPrincipales(1000, 3, params);
 
@@ -20,24 +20,24 @@ describe('calcularFlujosPrincipales', () => {
       0, 0, 0, 0, 0
     ]);
     expect(result.recuperacionCapital).toEqual([
-      0, 0, 0, 0, 500,
-      500, 500, 0, 0, 0
+      0, 0, 0, 500, 500,
+      500, 0, 0, 0, 0
     ]);
     expect(result.flujoNetoAnual).toEqual([
       -1000, -500, -500,
-      500, 500, 500,
-      500, 0, 0,
+      1000, 500, 500,
+      0, 0, 0,
       0
     ]);
     expect(result.flujoAcumulado).toEqual([
       -1000, -1500, -2000,
-      -1500, -1000, -500,
+      -1000, -500, 0,
       0, 0, 0,
       0
     ]);
     expect(result.capitalEnEmpresa).toEqual([
       1000, 2000, 3000,
-      3000, 2500, 2000,
+      2500, 2000, 1500,
       1500, 1500, 1500,
       1500
     ]);
