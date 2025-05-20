@@ -126,9 +126,10 @@ function calcularFlujosPrincipales(ticketAnual, aniosInversion, parametros) {
   const inversionTotal = aniosInversion * ticketAnual;
   const recuperacionTotal = flujos.recuperacionCapital.reduce((sum, val) => sum + val, 0);
   
-  // Verificamos que la recuperación sea exactamente el 50% de la inversión total
+  // Verificamos que la recuperación sea exactamente el 50% de la inversión total.
+  // Si no coincide, solo registramos una advertencia en consola.
   if (Math.abs(recuperacionTotal - (inversionTotal * 0.5)) > 0.01) {
-    console.warn("Inconsistencia detectada en la recuperación de capital. Ajustando...");
+    console.warn("Inconsistencia detectada en la recuperación de capital");
     // No ajustamos la recuperación, solo verificamos
   }
   
